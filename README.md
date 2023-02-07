@@ -1,24 +1,43 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 開発言語
+- Ruby 3.0.1
+- rails 6.1.6
+# 就職Termの技術
 
-Things you may want to cover:
+- お気に入り機能
+- gem devise
+- フォロー機能
+# カリキュラム外の技術
 
-* Ruby version
+- gmaps4rails
+- geocoder
 
-* System dependencies
+# 実行手順
 
-* Configuration
+``` bash
+$ git clone git@github.com:hirokifuruya/SnowTeach.git
+$ cd SnowTeach
+$ bundle
+$ rails db:create && rails db:migrate
+$ rails s
+```
+# カタログ設計
 
-* Database creation
+https://docs.google.com/spreadsheets/d/1IVq-KCe4n-MisuyFsHkQZT-1Ww0pkfhN8vsihm_4L9U/edit?usp=sharing
 
-* Database initialization
+# テーブル定義書
 
-* How to run the test suite
+https://docs.google.com/spreadsheets/d/1IVq-KCe4n-MisuyFsHkQZT-1Ww0pkfhN8vsihm_4L9U/edit?usp=sharing
 
-* Services (job queues, cache servers, search engines, etc.)
+# ワイヤーフレーム
 
-* Deployment instructions
+https://cacoo.com/diagrams/Pz0c3pANEnyVEPt1/D7AD3
 
-* ...
+# ER図
+
+![スクリーンショット 2023-02-07 12 16 14（2）](https://user-images.githubusercontent.com/117243796/217139672-056cc3fa-bf20-45d9-beaf-28c824d74869.png)
+
+# 画面遷移図
+
+![スクリーンショット 2023-02-07 12 14 35（2）](https://user-images.githubusercontent.com/117243796/217139897-7bf8a50f-0615-4679-be9c-6bcd2e927f80.png)
