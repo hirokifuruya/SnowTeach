@@ -1,19 +1,17 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
+  <strong>名前:</strong>
   <%= @recruit.name %>
 </p>
 
 <p>
-  <strong>Money:</strong>
+  <strong>お金:</strong>
   <%= @recruit.money %>
 </p>
 
 <p>
-  <strong>Detail:</strong>
+  <strong>詳細:</strong>
   <%= @recruit.detail %>
 </p>
 
-<%= link_to 'Edit', edit_recruit_path(@recruit) %> |
-<%= link_to 'Back', recruits_path %>
+<%= link_to '編集', edit_recruit_path(@recruit) %> |
+<%= link_to '戻る', recruits_path %>
