@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recruit.name %>
+</p>
+
+<p>
+  <strong>Money:</strong>
+  <%= @recruit.money %>
+</p>
+
+<p>
+  <strong>Detail:</strong>
+  <%= @recruit.detail %>
+</p>
+
+<%= link_to 'Edit', edit_recruit_path(@recruit) %> |
+<%= link_to 'Back', recruits_path %>
