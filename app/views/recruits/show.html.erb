@@ -1,0 +1,17 @@
+<p>
+  <strong>名前:</strong>
+  <%= @recruit.name %>
+</p>
+
+<p>
+  <strong>お金:</strong>
+  <%= @recruit.money %>
+</p>
+
+<p>
+  <strong>詳細:</strong>
+  <%= @recruit.detail %>
+</p>
+
+<%= link_to '編集', edit_recruit_path(@recruit) %> |
+<%= link_to '戻る', recruits_path %>
