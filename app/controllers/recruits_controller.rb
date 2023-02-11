@@ -1,5 +1,6 @@
 class RecruitsController < ApplicationController
   before_action :set_recruit, only: %i[ show edit update destroy ]
+  authorize_resource
 
   # GET /recruits or /recruits.json
   def index
@@ -17,6 +18,7 @@ class RecruitsController < ApplicationController
 
   # GET /recruits/1/edit
   def edit
+    @recruit = Recruit.find(params[:id])
   end
 
   # POST /recruits or /recruits.json
