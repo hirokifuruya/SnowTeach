@@ -1,4 +1,4 @@
 class Role < ApplicationRecord
-  has_many :users, through: :user_roles
+  belongs_to :user
   validates :name, presence: true
 end
