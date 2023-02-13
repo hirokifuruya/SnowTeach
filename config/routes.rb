@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :recruits
+  resources :recruits do
+    resources :reserves
+  end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   if Rails.env.development?

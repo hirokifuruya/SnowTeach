@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_12_160407) do
+ActiveRecord::Schema.define(version: 2023_02_13_144239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2023_02_12_160407) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "skiresots", force: :cascade do |t|
+  create_table "skiresorts", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
@@ -91,6 +91,6 @@ ActiveRecord::Schema.define(version: 2023_02_12_160407) do
   add_foreign_key "requests", "reserves", column: "reserve_id"
   add_foreign_key "requests", "users"
   add_foreign_key "reserves", "recruits"
-  add_foreign_key "reserves", "skiresots"
+  add_foreign_key "reserves", "skiresorts", column: "skiresot_id"
   add_foreign_key "users", "roles"
 end

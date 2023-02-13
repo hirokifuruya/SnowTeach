@@ -1,0 +1,27 @@
+<%= form_with model: [@recruit, @reserve], url: recruit_reserves_path do |form| %>
+  <% if @recruit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recruit.errors.count, "error") %> prohibited this recruit from being saved:</h2>
+
+      <ul>
+        <% @recruit.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :"日付" %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :"スキー場" %>
+    <%= form.collection_select :skiresort_id, Skiresort.all, :id, :name%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :"登録"%>
+  </div>
+<% end %>
