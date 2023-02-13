@@ -1,7 +1,6 @@
 class SkiresortController < ApplicationController
   def new
-    @reserve = Reserve.new
-    @recruit = Recruit.first
+    @skiresort = Skiresort.new
   end
 
   def index
@@ -9,9 +8,9 @@ class SkiresortController < ApplicationController
   end
 
   def create
-    @reserve = Reserve.new(reserve_params)
+    @skiresort = Skiresort.new(skiresort_params)
 
-    @reserve.save
+    @skiresort.save
   end
 
   def destroy
@@ -19,7 +18,7 @@ class SkiresortController < ApplicationController
 
   private
 
-  def reserve_params
-    params.require(:reserve).permit(:date, :recruit_id)
+  def skiresort_params
+    params.require(:skiresort).permit(:name, :address)
   end
 end
