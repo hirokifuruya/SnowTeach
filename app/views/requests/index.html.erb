@@ -1,0 +1,24 @@
+<h1>予約一覧画面</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>ステータス</th>
+      <th>インストラクター</th>
+      <th>金額</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.date %></td>
+        <td><%= request.status %></td>
+        <td><%= request.recruit.name %></td>
+        <td><%= request.recruit.money %></td>
+        <td><%= link_to '詳細', request %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
