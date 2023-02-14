@@ -1,4 +1,4 @@
-class SkiresortController < ApplicationController
+class SkiresortsController < ApplicationController
   def new
     @skiresort = Skiresort.new
   end

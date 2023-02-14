@@ -26,6 +26,22 @@
     <%= form.text_area :detail %>
   </div>
 
+  <div class="field">
+    <%= form.label :"開始日" %>
+    <%= form.date_field :start_day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :"終了日" %>
+    <%= form.date_field :end_day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :"スキー場" %>
+    <%= form.collection_select :skiresort_id, Skiresort.all, :id, :name %>
+  </div>
+
+
   <div class="actions">
     <%= form.submit :"登録"%>
   </div>

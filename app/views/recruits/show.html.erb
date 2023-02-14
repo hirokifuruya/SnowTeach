@@ -13,5 +13,25 @@
   <%= @recruit.detail %>
 </p>
 
+<p>
+  <strong>開始日:</strong>
+  <%= @recruit.start_day %>
+</p>
+
+<p>
+  <strong>終了日:</strong>
+  <%= @recruit.end_day %>
+</p>
+
+<p>
+  <strong>スキー場:</strong>
+  <%= @recruit.skiresort.name %>
+</p>
+
+<p>
+  <strong>住所:</strong>
+  <%= @recruit.skiresort.address %>
+</p>
+
 <%= link_to '編集', edit_recruit_path(@recruit) %> |
 <%= link_to '戻る', recruits_path %>

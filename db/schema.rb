@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_14_043832) do
+ActiveRecord::Schema.define(version: 2023_02_14_052813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 2023_02_14_043832) do
     t.text "detail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "start_day"
+    t.date "end_day"
+    t.bigint "skiresort_id"
+    t.index ["skiresort_id"], name: "index_recruits_on_skiresort_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -43,10 +47,8 @@ ActiveRecord::Schema.define(version: 2023_02_14_043832) do
   create_table "skiresorts", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.bigint "recruit_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recruit_id"], name: "index_skiresorts_on_recruit_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,8 +75,8 @@ ActiveRecord::Schema.define(version: 2023_02_14_043832) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "recruits", "skiresorts"
   add_foreign_key "requests", "recruits"
   add_foreign_key "requests", "users"
-  add_foreign_key "skiresorts", "recruits"
   add_foreign_key "users", "roles"
 end
