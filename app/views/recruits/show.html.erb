@@ -33,5 +33,10 @@
   <%= @recruit.skiresort.address %>
 </p>
 
+<%= month_calendar do |date| %>
+  <%= date %>
+<% end %>
+
+
 <%= link_to '編集', edit_recruit_path(@recruit) %> |
 <%= link_to '戻る', recruits_path %>
