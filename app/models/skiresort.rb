@@ -1,3 +1,3 @@
 class Skiresort < ApplicationRecord
-  has_many :reserves, dependent: :destroy
+  has_many :recruits
 end

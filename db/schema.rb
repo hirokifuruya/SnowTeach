@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_13_144239) do
+ActiveRecord::Schema.define(version: 2023_02_14_043832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "matchings", force: :cascade do |t|
-    t.string "status"
-    t.bigint "request_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["request_id"], name: "index_matchings_on_request_id"
-  end
 
   create_table "recruits", force: :cascade do |t|
     t.string "name"
@@ -32,22 +24,14 @@ ActiveRecord::Schema.define(version: 2023_02_13_144239) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "reserve_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["reserve_id"], name: "index_requests_on_reserve_id"
-    t.index ["user_id"], name: "index_requests_on_user_id"
-  end
-
-  create_table "reserves", force: :cascade do |t|
     t.integer "date"
+    t.integer "status"
     t.bigint "recruit_id"
-    t.bigint "skiresot_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recruit_id"], name: "index_reserves_on_recruit_id"
-    t.index ["skiresot_id"], name: "index_reserves_on_skiresot_id"
+    t.index ["recruit_id"], name: "index_requests_on_recruit_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -59,8 +43,10 @@ ActiveRecord::Schema.define(version: 2023_02_13_144239) do
   create_table "skiresorts", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.bigint "recruit_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["recruit_id"], name: "index_skiresorts_on_recruit_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,10 +73,8 @@ ActiveRecord::Schema.define(version: 2023_02_13_144239) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "matchings", "requests"
-  add_foreign_key "requests", "reserves", column: "reserve_id"
+  add_foreign_key "requests", "recruits"
   add_foreign_key "requests", "users"
-  add_foreign_key "reserves", "recruits"
-  add_foreign_key "reserves", "skiresorts", column: "skiresot_id"
+  add_foreign_key "skiresorts", "recruits"
   add_foreign_key "users", "roles"
 end
