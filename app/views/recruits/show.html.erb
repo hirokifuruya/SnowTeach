@@ -33,10 +33,13 @@
   <%= @recruit.skiresort.address %>
 </p>
 
-<%= month_calendar do |date| %>
-  <%= date %>
+<%= month_calendar(attribute: :start_day, end_attribute: :end_day) do |date| %>
+  <%= date.day %>
+  <% if @recruit.start_day <= date && @recruit.end_day >= date %>
+    <p><%= link_to '予約する', new_request_path(date: date) %></p>
+  <% end %>
 <% end %>
 
 
-<%= link_to '編集', edit_recruit_path(@recruit) %> |
+<%= link_to '編集', edit_recruit_path(@recruit) %>
 <%= link_to '戻る', recruits_path %>

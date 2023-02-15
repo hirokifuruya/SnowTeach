@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   def new
-    @request = Request.new
+    # binding.pry
+    @request = Request.new(date: params[:date])
   end
 
   def index
