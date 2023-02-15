@@ -21,14 +21,14 @@ ActiveRecord::Schema.define(version: 2023_02_14_052813) do
     t.text "detail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "skiresort_id"
     t.date "start_day"
     t.date "end_day"
-    t.bigint "skiresort_id"
     t.index ["skiresort_id"], name: "index_recruits_on_skiresort_id"
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer "date"
+    t.date "date"
     t.integer "status"
     t.bigint "recruit_id"
     t.bigint "user_id"

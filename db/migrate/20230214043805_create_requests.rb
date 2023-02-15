@@ -1,7 +1,7 @@
 class CreateRequests < ActiveRecord::Migration[6.1]
   def change
     create_table :requests do |t|
-      t.integer :date
+      t.date :date
       t.integer :status
 
       t.references :recruit, foreign_key: true
