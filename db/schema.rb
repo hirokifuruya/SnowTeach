@@ -15,20 +15,20 @@ ActiveRecord::Schema.define(version: 2023_02_16_091305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "labels", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "rabelings", force: :cascade do |t|
+  create_table "labelings", force: :cascade do |t|
     t.bigint "recruit_id", null: false
     t.bigint "label_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["label_id"], name: "index_rabelings_on_label_id"
-    t.index ["recruit_id", "label_id"], name: "index_rabelings_on_recruit_id_and_label_id", unique: true
-    t.index ["recruit_id"], name: "index_rabelings_on_recruit_id"
+    t.index ["label_id"], name: "index_labelings_on_label_id"
+    t.index ["recruit_id", "label_id"], name: "index_labelings_on_recruit_id_and_label_id", unique: true
+    t.index ["recruit_id"], name: "index_labelings_on_recruit_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "recruits", force: :cascade do |t|
@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2023_02_16_091305) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "rabelings", "labels"
-  add_foreign_key "rabelings", "recruits"
+  add_foreign_key "labelings", "labels"
+  add_foreign_key "labelings", "recruits"
   add_foreign_key "recruits", "skiresorts"
   add_foreign_key "requests", "recruits"
   add_foreign_key "requests", "users"

@@ -1,2 +1,0 @@
-class Rabeling < ApplicationRecord
-end
