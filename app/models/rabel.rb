@@ -1,0 +1,2 @@
+class Rabel < ApplicationRecord
+end
