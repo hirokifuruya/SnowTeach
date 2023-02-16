@@ -67,6 +67,6 @@ class RecruitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recruit_params
-      params.require(:recruit).permit(:name, :money, :detail)
+      params.require(:recruit).permit(:name, :money, :detail, :start_day, :end_day, :skiresort_id)
     end
 end

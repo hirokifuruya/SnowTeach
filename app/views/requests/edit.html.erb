@@ -1,0 +1,28 @@
+<h1>認証画面</h1>
+<%= form_with(model: @request) do |form| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+        <% request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :"認証" %>
+    <%= form.select :status,Request.statuses.keys %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit :"登録"%>
+  </div>
+<% end %>
+
+<%= link_to '詳細', @request %> |
+<%= link_to '戻る', requests_path %>

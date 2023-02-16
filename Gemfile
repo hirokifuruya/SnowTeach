@@ -15,7 +15,8 @@ gem 'devise-i18n'
 gem 'rexml'
 gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
-
+gem 'simple_calendar', '~> 2.0'
+gem 'rails-i18n'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 

@@ -1,0 +1,25 @@
+<h1>予約フォーム</h1>
+<%= form_with(model: @request) do |form| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+        <% request.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form.hidden_field :recruit_id, value: @recruit %>
+  <div class="field">
+    <%= form.label :"終了日" %>
+    <%= form.date_field :date %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit :"登録"%>
+  </div>
+<% end %>

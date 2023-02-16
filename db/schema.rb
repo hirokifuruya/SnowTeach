@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_10_092240) do
+ActiveRecord::Schema.define(version: 2023_02_15_092423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,32 @@ ActiveRecord::Schema.define(version: 2023_02_10_092240) do
     t.text "detail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "skiresort_id"
+    t.datetime "start_day"
+    t.datetime "end_day"
+    t.index ["skiresort_id"], name: "index_recruits_on_skiresort_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.date "date"
+    t.integer "status", default: 0
+    t.bigint "recruit_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recruit_id"], name: "index_requests_on_recruit_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "skiresorts", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -53,5 +75,8 @@ ActiveRecord::Schema.define(version: 2023_02_10_092240) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "recruits", "skiresorts"
+  add_foreign_key "requests", "recruits"
+  add_foreign_key "requests", "users"
   add_foreign_key "users", "roles"
 end

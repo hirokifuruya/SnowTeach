@@ -1,0 +1,29 @@
+<h1>予約詳細画面</h1>
+<p>
+  <strong>日付:</strong>
+  <%= @request.date %>
+</p>
+
+<p>
+  <strong>ステータス:</strong>
+  <%= @request.status %>
+</p>
+
+<p>
+  <strong>インストラクター:</strong>
+  <%= @request.recruit.name %>
+</p>
+
+<p>
+  <strong>詳細:</strong>
+  <%= @request.recruit.detail %>
+</p>
+
+<p>
+  <strong>応募者メールアドレス:</strong>
+  <%= @request.user.email %>
+</p>
+
+
+
+<%= link_to '戻る', requests_path %>
