@@ -31,7 +31,32 @@
 <p>
   <strong>住所:</strong>
   <%= @recruit.skiresort.address %>
+  <div id="map" style="height: 400px; width: 400px;"></div>
 </p>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwsDTd4yM8C6XTgHivmYjxzUM3nyvJ3Wo"></script>
+<script>
+  function initMap() {
+    var address = "<%= @recruit.skiresort.address %>";
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({address: address}, function(results, status) {
+      if (status === 'OK') {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: results[0].geometry.location
+        });
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+      } else {
+        console.log('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+  google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+
 
 <%= month_calendar(attribute: :start_day, end_attribute: :end_day) do |date| %>
   <%= date.day %>
