@@ -10,6 +10,7 @@
       <th>開始日</th>
       <th>終了日</th>
       <th>スキー場</th>
+      <th>教える内容</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +21,14 @@
         <td><%= recruit.name %></td>
         <td><%= recruit.money %></td>
         <td><%= recruit.detail %></td>
-        <td><%= recruit.start_day %></td>
-        <td><%= recruit.end_day %></td>
+        <td><%= recruit.start_day.strftime('%Y/%m/%d') if recruit.start_day %></td>
+        <td><%= recruit.end_day.strftime('%Y/%m/%d') if recruit.end_day %></td>
         <td><%= recruit.skiresort.name %></td>
+        <td>
+            <% recruit.labels.each do |label| %>
+              <%= label.name %>
+            <% end %>
+        </td>
         <td><%= link_to '詳細', recruit %></td>
         <td><%= link_to '編集', edit_recruit_path(recruit) %></td>
         <td><%= link_to '削除', recruit, method: :delete, data: { confirm: 'Are you sure?' } %></td>

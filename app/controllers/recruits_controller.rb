@@ -5,15 +5,24 @@ class RecruitsController < ApplicationController
   # GET /recruits or /recruits.json
   def index
     @recruits = Recruit.all
+    @labels = Label.all
+
+    if params[:label_id]
+      @recruits = Label.find(params[:label_id]).recruits
+    else
+      @recruits = Recruit.includes(:skiresort, :labels).all
+    end
   end
 
   # GET /recruits/1 or /recruits/1.json
   def show
+    @recruit = Recruit.includes(:skiresort, :labels).find(params[:id])
   end
 
   # GET /recruits/new
   def new
     @recruit = Recruit.new
+    @labels = Label.all
   end
 
   # GET /recruits/1/edit
@@ -67,6 +76,6 @@ class RecruitsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recruit_params
-      params.require(:recruit).permit(:name, :money, :detail, :start_day, :end_day, :skiresort_id)
+      params.require(:recruit).permit(:name, :money, :detail, :start_day, :end_day, :skiresort_id, label_ids: [])
     end
 end
