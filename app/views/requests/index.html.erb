@@ -18,7 +18,11 @@
         <td><%= request.recruit.name %></td>
         <td><%= request.recruit.money %></td>
         <td><%= link_to '詳細', request %></td>
+        <td><%= link_to '編集', edit_request_path(request) %></td>
+        <td><%= link_to '削除', request, method: :delete, data: { confirm: "本当に削除しますか?" } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to '投稿一覧画面', recruits_path %>

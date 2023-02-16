@@ -36,7 +36,7 @@
 <%= month_calendar(attribute: :start_day, end_attribute: :end_day) do |date| %>
   <%= date.day %>
   <% if @recruit.start_day <= date && @recruit.end_day >= date %>
-    <p><%= link_to '予約する', new_request_path(date: date) %></p>
+    <p><%= link_to '予約する', new_request_path(date: date, recruit_id: @recruit.id) %></p>
   <% end %>
 <% end %>
 

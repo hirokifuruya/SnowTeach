@@ -1,4 +1,4 @@
-<h1>予約フォーム</h1>
+<h1>認証画面</h1>
 <%= form_with(model: @request) do |form| %>
   <% if @request.errors.any? %>
     <div id="error_explanation">
@@ -12,10 +12,10 @@
     </div>
   <% end %>
 
-<%= form.hidden_field :recruit_id, value: @recruit %>
+
   <div class="field">
-    <%= form.label :"終了日" %>
-    <%= form.date_field :date %>
+    <%= form.label :"認証" %>
+    <%= form.select :status,Request.statuses.keys %>
   </div>
 
 
@@ -23,3 +23,6 @@
     <%= form.submit :"登録"%>
   </div>
 <% end %>
+
+<%= link_to '詳細', @request %> |
+<%= link_to '戻る', requests_path %>

@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
   def new
     # binding.pry
     @request = Request.new(date: params[:date])
+    @recruit = params[:recruit_id]
   end
 
   def index
@@ -9,24 +10,49 @@ class RequestsController < ApplicationController
   end
 
   def show
+  @request = Request.find(params[:id])
+  if @request.nil?
+    flash[:error] = "リクエストが見つかりませんでした。"
+  end
+
+  end
+
+  def edit
     @request = Request.find(params[:id])
   end
 
+  def update
+    @request = Request.find(params[:id])
+    if @request.update(request_params)
+      redirect_to requests_path
+    else
+      render :edit
+    end
+  end
+
   def create
-    #@request = Request.new(request_params)
-    @recruit = Recruit.find(1)
     @request = current_user.requests.build(request_params)
-    @request.recruit_id = @recruit.id
-    @request.save
-    redirect_to requests_path
+    if @request.valid?
+      @request.save
+      redirect_to requests_path
+    else
+      render :new
+    end
   end
 
   def destroy
+    @request = Request.find(params[:id])
+    if @request.destroy
+      flash[:success] = "予約が削除されました。"
+    else
+      flash[:error] = "予約を削除できませんでした。"
+    end
+    redirect_to requests_path
   end
 
   private
 
   def request_params
-    params.require(:request).permit(:date, :status, :recruit_id)
+    params.require(:request).permit(:date, :status, :request_id, :recruit_id)
   end
 end
