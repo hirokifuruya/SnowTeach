@@ -15,12 +15,12 @@
 
 <p>
   <strong>開始日:</strong>
-  <%= @recruit.start_day %>
+  <%= @recruit.start_day&.strftime('%Y/%m/%d') %>
 </p>
 
 <p>
   <strong>終了日:</strong>
-  <%= @recruit.end_day %>
+  <%= @recruit.end_day&.strftime('%Y/%m/%d') %>
 </p>
 
 <p>
@@ -29,10 +29,12 @@
 </p>
 
 <p>
-  <strong>住所:</strong>
-  <%= @recruit.skiresort.address %>
-  <div id="map" style="height: 400px; width: 400px;"></div>
+  <strong>ラベル:</strong>
+  <% @recruit.labels.each do |label| %>
+    <%= label.name %>
+  <% end %>
 </p>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwsDTd4yM8C6XTgHivmYjxzUM3nyvJ3Wo"></script>
 <script>
