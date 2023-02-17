@@ -4,13 +4,18 @@ class RecruitsController < ApplicationController
 
   # GET /recruits or /recruits.json
   def index
-    @recruits = Recruit.all
-    @labels = Label.all
+    @recruits = Recruit.includes(:skiresort, :labels)
 
-    if params[:label_id]
-      @recruits = Label.find(params[:label_id]).recruits
-    else
-      @recruits = Recruit.includes(:skiresort, :labels).all
+    if params[:search].present?
+      @recruits = @recruits.where('name LIKE ?', "%#{params[:search]}%")
+    end
+
+    if params[:skiresort_id].present?
+      @recruits = @recruits.where(skiresort_id: params[:skiresort_id])
+    end
+
+    if params[:label_ids].present?
+      @recruits = @recruits.joins(:labels).where(labels: { id: params[:label_ids] }).distinct
     end
   end
 
