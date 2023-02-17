@@ -3,9 +3,18 @@ Rails.application.routes.draw do
   resources :skiresorts
   resources :requests
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
+  resources :users, only: [:show]
+
   if Rails.env.development?
-    root 'recruits#index'
+    root to: 'recruits#index'
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  else
+    root to: 'home#index'
   end
 end
