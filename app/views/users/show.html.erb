@@ -1,2 +1,36 @@
 <h1>マイページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+<p>権限: <%= @user.role.name %></p>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>フォロー中</h3>
+    <% if @user.following.any? %>
+      <ul class="list-unstyled">
+        <% @user.following.each do |user| %>
+          <li>
+            <%= render 'follow', user: user %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>フォローしているユーザーはいません。</p>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <h3>フォロワー</h3>
+    <% if @user.followers.any? %>
+      <ul class="list-unstyled">
+        <% @user.followers.each do |user| %>
+          <li>
+            <%= render 'follow', user: user %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>フォロワーはいません。</p>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to '投稿一覧画面', recruits_path %>
