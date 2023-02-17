@@ -1,6 +1,31 @@
 
 <h1>投稿一覧</h1>
 
+<%= form_tag(recruits_path, method: :get) do %>
+  <div>
+    <%= label_tag(:search, "検索") %>
+    <%= text_field_tag(:search) %>
+  </div>
+
+  <div>
+    <%= label_tag(:skiresort_id, "スキー場") %>
+    <%= select_tag(:skiresort_id, options_from_collection_for_select(Skiresort.all, :id, :name)) %>
+  </div>
+
+  <div>
+    <%= label_tag(:label_ids, "ラベル") %><br>
+    <% Label.all.each do |label| %>
+      <%= check_box_tag "label_ids[]", label.id, params[:label_ids]&.include?(label.id.to_s) %>
+      <%= label.name %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= submit_tag("検索") %>
+  </div>
+<% end %>
+
+
 <table>
   <thead>
     <tr>
