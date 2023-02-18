@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_favorites, source: :followed
   has_many :followers, through: :passive_favorites, source: :follower
   has_many :favorites, foreign_key: "follower_id", dependent: :destroy
+  has_many :requests, dependent: :destroy
 
   def follow(other_user)
     active_favorites.create(followed_id: other_user.id)
