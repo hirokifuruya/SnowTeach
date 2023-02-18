@@ -1,4 +1,11 @@
-<%= form_with(model: current_user.active_favorites.build, local: true) do |form| %>
-  <%= form.hidden_field :followed_id, value: user.id %>
-  <%= form.submit "フォローする", class: "btn btn-primary" %>
+<% if current_user.following?(user) %>
+  <%= form_with(model: current_user.active_favorites.find_by(followed_id: user.id), local: true, method: :delete) do |f| %>
+    <%= f.submit "フォロー解除", class: "btn btn-warning" %>
+  <% end %>
+<% else %>
+  <%= form_with(model: current_user.active_favorites.build) do |f| %>
+    <div><%= f.hidden_field :followed_id, value: user.id %></div>
+    <%= f.submit "フォローする", class: "btn btn-primary" %>
+  <% end %>
 <% end %>
+
