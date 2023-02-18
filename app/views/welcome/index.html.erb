@@ -1,0 +1,13 @@
+<h1>ようこそ、SnowTeachへ！</h1>
+
+<p>
+  SnowTeachはスノーボードのインストラクターとレッスンを受講したい方をつなげるサービスです。
+</p>
+
+<% if user_signed_in? %>
+  <p><%= link_to 'マイページ', user_path(current_user) %></p>
+<% else %>
+  <p><%= link_to '新規登録', new_user_registration_path %></p>
+  <p><%= link_to 'ログイン', new_user_session_path %></p>
+<% end %>
+

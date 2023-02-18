@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   resources :recruits
   resources :skiresorts
   resources :requests
@@ -20,3 +22,4 @@ Rails.application.routes.draw do
     root to: 'home#index'
   end
 end
+
