@@ -2,20 +2,16 @@
 <p>メールアドレス: <%= @user.email %></p>
 <p>権限: <%= @user.role.name %></p>
 
-<% @user ||= User.find(params[:id]) %>
 <div class="row">
   <div class="col-md-6">
-<h3>フォロー中</h3>
-<div>
-  <% @user.following.each do |following_user| %>
-    <p><%= following_user.email %></p>
-  <% end %>
-</div>
-<% if current_user.following?(@user) %>
-  <%= render "unfollow" %>
-<% else %>
-  <%= render "follow" %>
-<% end %>
+    <h3>フォロー中</h3>
+    <div>
+      <% @user.following.each do |following_user| %>
+        <p><%= following_user.email %></p>
+      <% end %>
+    </div>
+    <%= render 'users/follow', user: @user %>
+  </div>
   <div class="col-md-6">
     <h3>フォロワー</h3>
     <div>
@@ -37,5 +33,5 @@
   </div>
 </div>
 
-
 <%= link_to '投稿一覧画面', recruits_path %>
+

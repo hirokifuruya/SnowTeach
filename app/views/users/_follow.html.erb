@@ -1,6 +1,4 @@
-<%# @user ||= User.find(params[:id]) %>
-<% if current_user.following?(@user) %>
-  <%= render "unfollow" %>
-<% else %>
-  <%= render "follow" %>
+<%= form_with(model: current_user.active_favorites.build, local: true) do |form| %>
+  <%= form.hidden_field :followed_id, value: user.id %>
+  <%= form.submit "フォローする", class: "btn btn-primary" %>
 <% end %>
