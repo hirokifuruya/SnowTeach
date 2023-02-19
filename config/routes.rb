@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root to: 'welcome#index'
+
+  get 'welcome/index', as: 'welcome'
+
   resources :recruits
   resources :skiresorts
   resources :requests
@@ -9,14 +13,16 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  devise_scope :user do
+    get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_session
+  end
+
   resources :users, only: [:show]
 
   resources :favorites, only: [:create, :destroy]
 
   if Rails.env.development?
-    root to: 'recruits#index'
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  else
-    root to: 'home#index'
   end
 end
+

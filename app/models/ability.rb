@@ -4,7 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    case user.role.name
+    case user&.role&.name
     when "admin"
       can :access, :rails_admin
       can :manage, :all
@@ -14,8 +14,13 @@ class Ability
     when "general"
       can :read, :all
       cannot :access, :rails_admin
+      can :create, Request
+      can :read, Request, user_id: user.id
+      can :update, Request, user_id: user.id
+      can :destroy, Request, user_id: user.id
     else
       cannot :manage, :all
     end
   end
 end
+

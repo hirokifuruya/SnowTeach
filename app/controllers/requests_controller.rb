@@ -1,8 +1,9 @@
 class RequestsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+
   def new
-    # binding.pry
-    @request = Request.new(date: params[:date])
-    @recruit = params[:recruit_id]
+    @request = current_user.requests.build(date: params[:date], recruit_id: params[:recruit_id])
   end
 
   def index
@@ -10,11 +11,10 @@ class RequestsController < ApplicationController
   end
 
   def show
-  @request = Request.find(params[:id])
-  if @request.nil?
-    flash[:error] = "リクエストが見つかりませんでした。"
-  end
-
+    @request = Request.find(params[:id])
+    if @request.nil?
+      flash[:error] = "リクエストが見つかりませんでした。"
+    end
   end
 
   def edit
@@ -56,3 +56,4 @@ class RequestsController < ApplicationController
     params.require(:request).permit(:date, :status, :request_id, :recruit_id)
   end
 end
+
