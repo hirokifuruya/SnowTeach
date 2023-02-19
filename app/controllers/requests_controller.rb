@@ -1,25 +1,19 @@
 class RequestsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+
   def new
-    if current_user.role_id == 3
-      redirect_to recruits_path, alert: "You are not authorized to access this page."
-    else
-      @request = current_user.requests.build(date: params[:date], recruit_id: params[:recruit_id])
-    end
+    @request = current_user.requests.build(date: params[:date], recruit_id: params[:recruit_id])
   end
 
   def index
-    if current_user.role_id == 3
-      redirect_to recruits_path, alert: "You are not authorized to access this page."
-    else
-      @requests = Request.all
-    end
+    @requests = Request.all
   end
 
   def show
     @request = Request.find(params[:id])
     if @request.nil?
       flash[:error] = "リクエストが見つかりませんでした。"
-      redirect_to requests_path
     end
   end
 
@@ -40,11 +34,7 @@ class RequestsController < ApplicationController
     @request = current_user.requests.build(request_params)
     if @request.valid?
       @request.save
-      if current_user.role_id == 3
-        redirect_to recruits_path
-      else
-        redirect_to requests_path
-      end
+      redirect_to requests_path
     else
       render :new
     end

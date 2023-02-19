@@ -14,7 +14,10 @@ class Ability
     when "general"
       can :read, :all
       cannot :access, :rails_admin
-      can :read, :rails_admin
+      can :create, Request
+      can :read, Request, user_id: user.id
+      can :update, Request, user_id: user.id
+      can :destroy, Request, user_id: user.id
     else
       cannot :manage, :all
     end
