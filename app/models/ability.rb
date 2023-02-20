@@ -15,9 +15,9 @@ class Ability
       can :read, :all
       cannot :access, :rails_admin
       can :create, Request
-      can :read, Request, user_id: user.id
-      can :update, Request, user_id: user.id
-      can :destroy, Request, user_id: user.id
+      cannot :read, Request
+      cannot :update, Request
+      cannot :destroy, Request
     else
       cannot :manage, :all
     end

@@ -4,6 +4,7 @@ class RequestsController < ApplicationController
 
   def new
     @request = current_user.requests.build(date: params[:date], recruit_id: params[:recruit_id])
+    @recruit = Recruit.find(params[:recruit_id])
   end
 
   def index

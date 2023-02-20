@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       current_user
     end
 
-    rescue_from CanCan::AccessDenied do |exception|
-      redirect_to recruits_path, alert: exception.message
-    end
+    #rescue_from CanCan::AccessDenied do |exception|
+      #redirect_to recruits_path, alert: exception.message
+    #end
 end
