@@ -1,4 +1,0 @@
-<%= form_with(model: current_user.active_favorites.find_by(followed_id: user.id), local: true, method: :delete) do |form| %>
-  <%= form.hidden_field :followed_id, value: user.id %>
-    <%= form.submit "フォロー解除する", class: "btn btn-danger" %>
-<% end %>

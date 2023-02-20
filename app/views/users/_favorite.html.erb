@@ -1,0 +1,11 @@
+<!-- app/views/users/_favorite.html.erb -->
+<% if current_user.favorites.exists?(followed_id: user.id) %>
+  <%= form_with(model: current_user.favorites.find_by(followed_id: user.id), local: true, method: :delete) do |f| %>
+    <%= f.submit "お気に入り解除", class: "btn btn-warning" %>
+  <% end %>
+<% else %>
+  <%= form_with(model: current_user.favorites.build) do |f| %>
+    <div><%= f.hidden_field :followed_id, value: user.id %></div>
+    <%= f.submit "お気に入りする", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
