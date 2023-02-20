@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.includes(:following, :followers, :instructors).find(params[:id])
     @user = User.find(params[:id])
+    @requests = @user.requests
     if @user.role_id == 2
       @favorite = current_user.favorites.new(followed: @user)
     end
