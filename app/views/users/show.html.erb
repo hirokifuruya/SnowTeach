@@ -12,6 +12,5 @@
     <% if current_user.role_id == 3 && @user.role_id == 2 %>
       <%= render 'users/favorite', user: @user %>
     <% end %>
-  </div>
 </div>
 <%= link_to '投稿一覧画面', recruits_path %>
