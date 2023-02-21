@@ -26,7 +26,7 @@ class RecruitsController < ApplicationController
 
   # GET /recruits/new
   def new
-    @recruit = Recruit.new
+    @recruit = current_user.recruits.build
     @labels = Label.all
   end
 
@@ -37,7 +37,7 @@ class RecruitsController < ApplicationController
 
   # POST /recruits or /recruits.json
   def create
-    @recruit = Recruit.new(recruit_params)
+    @recruit = current_user.recruits.build(recruit_params)
 
     respond_to do |format|
       if @recruit.save
@@ -84,3 +84,5 @@ class RecruitsController < ApplicationController
       params.require(:recruit).permit(:name, :money, :detail, :start_day, :end_day, :skiresort_id, label_ids: [])
     end
 end
+
+

@@ -19,7 +19,7 @@ class Ability
       cannot :update, Request
       cannot :destroy, Request
     else
-      cannot :manage, :all
+      can :read, :all
     end
   end
 end
