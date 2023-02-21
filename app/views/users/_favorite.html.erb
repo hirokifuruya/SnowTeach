@@ -4,7 +4,7 @@
   <% end %>
 <% else %>
   <%= form_with(model: current_user.favorites.build) do |f| %>
-    <div><%= f.hidden_field :followed_id, value: current_user.id %></div>
+    <div><%= f.hidden_field :follower_id, value: current_user.id %></div>
     <%= f.submit "お気に入りする", class: "btn btn-primary" %>
   <% end %>
 <% end %>

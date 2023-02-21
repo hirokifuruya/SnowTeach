@@ -26,7 +26,7 @@ class RecruitsController < ApplicationController
 
   # GET /recruits/new
   def new
-    @recruit = current_user.recruits.build
+    @recruit = current_user.recruit.build
     @labels = Label.all
   end
 
@@ -37,7 +37,7 @@ class RecruitsController < ApplicationController
 
   # POST /recruits or /recruits.json
   def create
-    @recruit = current_user.recruits.build(recruit_params)
+    @recruit = current_user.recruit.build(recruit_params)
 
     respond_to do |format|
       if @recruit.save

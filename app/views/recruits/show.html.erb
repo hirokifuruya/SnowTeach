@@ -1,8 +1,14 @@
 <p>
   <strong>名前:</strong>
   <%= @recruit.name %>
-  <%= form.hidden_field :current_user, value: current_user.id %>
 </p>
+
+<p>
+  <strong>email:</strong>
+  <%= @recruit.user.email %>
+</p>
+
+<%= render 'users/favorite' %>
 
 <p>
   <strong>お金:</strong>
