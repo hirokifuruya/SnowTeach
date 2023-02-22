@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <header>
   <%= link_to 'ゲストログイン', sessions_guest_sign_in_path, method: :post %>
   <%= link_to '管理者ゲストログイン', admin_guest_sign_in_path, method: :post %>
 
@@ -11,7 +11,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  </header>
 
   <body>
     <% if user_signed_in? %>
@@ -30,5 +30,10 @@
     <% end %>
 
     <%= yield %>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">© 2023 SnowTeach </span>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,20 +1,15 @@
 class FavoritesController < ApplicationController
-  before_action :set_user
+  before_action :authenticate_user!
 
   def create
-    current_user.follow(@user)
-    redirect_back(fallback_location: recruits_path)
+    @user = User.find(params[:favorite][:followed_id])
+    current_user.favorites.create(followed_id: @user.id)
+    redirect_to current_user
   end
 
   def destroy
-    current_user.unfollow(@user)
-    redirect_back(fallback_location: recruits_path)
-  end
-
-  private
-
-  def set_user
-    @user = User.find(params[:user_id])
+    @user = Favorite.find(params[:id]).followed
+    current_user.favorites.find_by(followed_id: @user.id).destroy
+    redirect_to current_user
   end
 end
-
