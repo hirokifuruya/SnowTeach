@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <header>
+  <%= link_to 'ゲストログイン', sessions_guest_sign_in_path, method: :post %>
+  <%= link_to '管理者ゲストログイン', admin_guest_sign_in_path, method: :post %>
+
     <title>SnowTeach</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -8,11 +11,11 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  </header>
 
   <body>
     <% if user_signed_in? %>
-      <%= link_to "募集を投稿する", recruits_path %>
+      <%= link_to "募集を投稿する", new_recruit_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "新規登録", new_user_registration_path %>
@@ -27,5 +30,10 @@
     <% end %>
 
     <%= yield %>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">© 2023 SnowTeach </span>
+      </div>
+    </footer>
   </body>
 </html>

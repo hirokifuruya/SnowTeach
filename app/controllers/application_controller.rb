@@ -4,17 +4,21 @@ class ApplicationController < ActionController::Base
 
   def check_admin_authorization
     if request.path.start_with?('/admin')
-    authorize! :access, :rails_admin
+      authorize! :access, :rails_admin
     end
+  end
 
-    protected_methods
+  protected_methods
 
-    def configure_permitted_parameters
+  def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:role_id])
-    end
+  end
 
-    def after_sign_in_path_for(resource)
-      current_user
-    end
+  def after_sign_in_path_for(resource)
+    current_user
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to recruits_path, alert: exception.message
   end
 end

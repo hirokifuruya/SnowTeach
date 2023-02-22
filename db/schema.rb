@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_17_073144) do
+ActiveRecord::Schema.define(version: 2023_02_21_082828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,9 @@ ActiveRecord::Schema.define(version: 2023_02_17_073144) do
     t.bigint "skiresort_id"
     t.datetime "start_day"
     t.datetime "end_day"
+    t.bigint "user_id", null: false
     t.index ["skiresort_id"], name: "index_recruits_on_skiresort_id"
+    t.index ["user_id"], name: "index_recruits_on_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 2023_02_17_073144) do
   add_foreign_key "labelings", "labels"
   add_foreign_key "labelings", "recruits"
   add_foreign_key "recruits", "skiresorts"
+  add_foreign_key "recruits", "users"
   add_foreign_key "requests", "recruits"
   add_foreign_key "requests", "users"
   add_foreign_key "users", "roles"
