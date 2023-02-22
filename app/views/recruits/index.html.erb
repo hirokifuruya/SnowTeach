@@ -26,16 +26,16 @@
 <% end %>
 
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>名前</th>
-      <th>お金</th>
-      <th>詳細</th>
-      <th>開始日</th>
-      <th>終了日</th>
-      <th>スキー場</th>
-      <th>教える内容</th>
+      <th scope="col">名前</th>
+      <th scope="col">お金</th>
+      <th scope="col">詳細</th>
+      <th scope="col">開始日</th>
+      <th scope="col">終了日</th>
+      <th scope="col">スキー場</th>
+      <th scope="col">教える内容</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -43,7 +43,7 @@
   <tbody>
     <% @recruits.each do |recruit| %>
       <tr>
-        <td><%= recruit.name %></td>
+        <td><%= recruit.name %></th>
         <td><%= recruit.money %></td>
         <td><%= recruit.detail %></td>
         <td><%= recruit.start_day.strftime('%Y/%m/%d') if recruit.start_day %></td>
@@ -64,3 +64,4 @@
 
 <br>
 <%= link_to 'マイページ',  user_session_path %>
+

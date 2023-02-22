@@ -1,76 +1,83 @@
-<h1>投稿詳細</h1>
-<p>
-  <strong>名前:</strong>
-  <%= @recruit.name %>
-</p>
+<header>
+  <%= link_to '戻る', recruits_path %>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>投稿詳細</h1>
+      <p>
+        <strong>名前:</strong>
+        <%= @recruit.name %>
+      </p>
 
 
-<%= render 'users/favorite' %>
+      <%= render 'users/favorite' %>
 
-<p>
-  <strong>お金:</strong>
-  <%= @recruit.money %>
-</p>
+      <p>
+        <strong>お金:</strong>
+        <%= @recruit.money %>
+      </p>
 
-<p>
-  <strong>詳細:</strong>
-  <%= @recruit.detail %>
-</p>
+      <p>
+        <strong>詳細:</strong>
+        <%= @recruit.detail %>
+      </p>
 
-<p>
-  <strong>開始日:</strong>
-  <%= @recruit.start_day&.strftime('%Y/%m/%d') %>
-</p>
+      <p>
+        <strong>開始日:</strong>
+        <%= @recruit.start_day&.strftime('%Y/%m/%d') %>
+      </p>
 
-<p>
-  <strong>終了日:</strong>
-  <%= @recruit.end_day&.strftime('%Y/%m/%d') %>
-</p>
+      <p>
+        <strong>終了日:</strong>
+        <%= @recruit.end_day&.strftime('%Y/%m/%d') %>
+      </p>
 
-<p>
-  <strong>スキー場:</strong>
-  <%= @recruit.skiresort.name %>
-</p>
+      <p>
+        <strong>スキー場:</strong>
+        <%= @recruit.skiresort.name %>
+      </p>
 
-<p>
-  <strong>ラベル:</strong>
-  <% @recruit.labels.each do |label| %>
-    <%= label.name %>
-  <% end %>
-</p>
-
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwsDTd4yM8C6XTgHivmYjxzUM3nyvJ3Wo"></script>
-<script>
-  function initMap() {
-    var address = "<%= @recruit.skiresort.address %>";
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({address: address}, function(results, status) {
-      if (status === 'OK') {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: results[0].geometry.location
-        });
-        var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
-      } else {
-        console.log('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
-  google.maps.event.addDomListener(window, 'load', initMap);
-</script>
+      <p>
+        <strong>ラベル:</strong>
+        <% @recruit.labels.each do |label| %>
+          <%= label.name %>
+        <% end %>
+      </p>
 
 
-<%= month_calendar(attribute: :start_day, end_attribute: :end_day) do |date| %>
-  <%= date.day %>
-  <% if @recruit.start_day <= date && @recruit.end_day >= date %>
-    <p><%= link_to '予約する', new_request_path(date: date, recruit_id: @recruit.id) %></p>
-  <% end %>
-<% end %>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwsDTd4yM8C6XTgHivmYjxzUM3nyvJ3Wo"></script>
+        <script>
+          function initMap() {
+            var address = "<%= @recruit.skiresort.address %>";
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({address: address}, function(results, status) {
+              if (status === 'OK') {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: results[0].geometry.location
+                });
+                var marker = new google.maps.Marker({
+                  map: map,
+                  position: results[0].geometry.location
+                });
+              } else {
+                console.log('Geocode was not successful for the following reason: ' + status);
+              }
+            });
+          }
+          google.maps.event.addDomListener(window, 'load', initMap);
+        </script>
+    </div>
 
-
-<%= link_to '編集', edit_recruit_path(@recruit) %>
-<%= link_to '戻る', recruits_path %>
+    <div class="col-md-6">
+      <%= month_calendar(attribute: :start_day, end_attribute: :end_day) do |date| %>
+        <%= date.day %>
+        <% if @recruit.start_day <= date && @recruit.end_day >= date %>
+          <p><%= link_to '予約する', new_request_path(date: date, recruit_id: @recruit.id) %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
