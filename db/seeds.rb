@@ -27,7 +27,7 @@ User.create!(
     )
 
 #<skirosortデータ>
-Skiresort.create!(
+Skiresort.find_or_create_by(
   [
     {id: 1, name:'かぐらスキー場', address: '新潟県南魚沼郡湯沢町三俣742'},
     {id: 2, name:'GALA湯沢スキー場', address: '新潟県南魚沼郡湯沢町大字湯沢字茅平1039-2'},
@@ -38,7 +38,7 @@ Skiresort.create!(
 )
 
 #<labelデータ>
-Label.create!(
+Label.find_or_create_by(
   [
     {id: 1, name: '初心者' },
     {id: 2, name: '中級者' },
@@ -60,10 +60,10 @@ Label.create!(
 )
 
 #<recruitデータ>
-Recruit.create!{
+Recruit.find_or_create_by{
 [
   {id: 1, name:'平野歩夢', money:'100,000円',detail: 'オリンピック金メダリスト',
-    start_day: '2023/2/25', end_day: '2023/3/4', skiresort_id: '1',
-    user_id: '2',label_id: '3,4,5,6,7,8,9' }
+    start_day: '2023/2/25', end_day: '2023/3/4', skiresort_id: 1,
+    user_id: 2, label_id: '3,4,5,6,7,8,9' }
 ]
 }
