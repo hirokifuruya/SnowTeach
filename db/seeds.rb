@@ -23,7 +23,7 @@ User.create!(
     {email: 'instructor2@gmail.com', password: 'instructor2@gmail.com', role_id: 2},
     {email: 'general1@gmail.com', password: 'general1@gmail.com', role_id: 3},
     {email: 'general2@gmail.com', password: 'general2@gmail.com', role_id: 3}
-  ]
+  ].reject { |user| User.exists?(email: user[:email]) }
     )
 
 #<skirosortデータ>
