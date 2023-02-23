@@ -9,9 +9,10 @@
 
 
 #<roleデータ>
-Role.create!(name: 'admin')
-Role.create!(name: 'instructor')
-Role.create!(name: 'user')
+Role.create!(name: "admin") unless Role.exists?(name: "admin")
+Role.create!(name: "instructor") unless Role.exists?(name: "instructor")
+Role.create!(name: "general") unless Role.exists?(name: "general")
+
 
 
 #<userデータ>
