@@ -53,9 +53,8 @@ Label.find_or_create_by(
     {id: 14, name: '小学生' },
     {id: 15, name: '中学生' },
     {id: 16, name: '高校生' }
-  ].map(&:to_s)
+  ].map(&:stringify_keys)
 )
-
 
 #<recruitデータ>
 Recruit.find_or_create_by(
