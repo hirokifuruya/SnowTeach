@@ -27,15 +27,12 @@ User.create!(
     )
 
 #<skirosortデータ>
-Skiresort.find_or_create_by(
-  [
-    {id: 1, name:'かぐらスキー場', address: '新潟県南魚沼郡湯沢町三俣742'},
-    {id: 2, name:'GALA湯沢スキー場', address: '新潟県南魚沼郡湯沢町大字湯沢字茅平1039-2'},
-    {id: 3, name:'ルスツリゾート', address: '北海道虻田郡留寿都村字泉川13'},
-    {id: 4, name:'ニセコ東急 グラン・ヒラフ', address: '北海道虻田郡倶知安町ニセコひらふ1条2丁目9番1号'},
-    {id: 5, name:'グランデコスノーリゾート', address: '福島県耶麻郡北塩原村大字桧原字荒砂沢山1082番93'}
-  ]
-)
+Skiresort.find_or_create_by(id: 1, name:'かぐらスキー場', address: '新潟県南魚沼郡湯沢町三俣742')
+Skiresort.find_or_create_by(id: 2, name:'GALA湯沢スキー場', address: '新潟県南魚沼郡湯沢町大字湯沢字茅平1039-2')
+Skiresort.find_or_create_by(id: 3, name:'ルスツリゾート', address: '北海道虻田郡留寿都村字泉川13')
+Skiresort.find_or_create_by(id: 4, name:'ニセコ東急 グラン・ヒラフ', address: '北海道虻田郡倶知安町ニセコひらふ1条2丁目9番1号')
+Skiresort.find_or_create_by(id: 5, name:'グランデコスノーリゾート', address: '福島県耶麻郡北塩原村大字桧原字荒砂沢山1082番93')
+
 
 #<labelデータ>
 Label.find_or_create_by(
@@ -56,14 +53,19 @@ Label.find_or_create_by(
     {id: 14, name: '小学生' },
     {id: 15, name: '中学生' },
     {id: 16, name: '高校生' }
-  ]
+  ].map(&:to_s)
 )
 
+
 #<recruitデータ>
-Recruit.find_or_create_by{
-[
-  {id: 1, name:'平野歩夢', money:'100,000円',detail: 'オリンピック金メダリスト',
-    start_day: '2023/2/25', end_day: '2023/3/4', skiresort_id: 1,
-    user_id: 2, label_id: '3,4,5,6,7,8,9' }
-]
-}
+Recruit.find_or_create_by(
+  id: 1,
+  name: '平野歩夢',
+  money: '100,000円',
+  detail: 'オリンピック金メダリスト',
+  start_day: '2023/2/25',
+  end_day: '2023/3/4',
+  skiresort_id: 1,
+  user_id: 2,
+  label_id: '3,4,5,6,7,8,9'
+)
