@@ -40,6 +40,11 @@
       </p>
 
       <p>
+        <strong>住所:</strong>
+        <%= @recruit.skiresort.address %>
+      </p>
+
+      <p>
         <strong>ラベル:</strong>
         <% @recruit.labels.each do |label| %>
           <%= label.name %>
