@@ -27,11 +27,31 @@ User.create!(
     )
 
 #<skirosortデータ>
-Skiresort.find_or_create_by(id: 1, name:'かぐらスキー場', address: '新潟県南魚沼郡湯沢町三俣742')
-Skiresort.find_or_create_by(id: 2, name:'GALA湯沢スキー場', address: '新潟県南魚沼郡湯沢町大字湯沢字茅平1039-2')
-Skiresort.find_or_create_by(id: 3, name:'ルスツリゾート', address: '北海道虻田郡留寿都村字泉川13')
-Skiresort.find_or_create_by(id: 4, name:'ニセコ東急 グラン・ヒラフ', address: '北海道虻田郡倶知安町ニセコひらふ1条2丁目9番1号')
-Skiresort.find_or_create_by(id: 5, name:'グランデコスノーリゾート', address: '福島県耶麻郡北塩原村大字桧原字荒砂沢山1082番93')
+Skiresort.find_or_create_by(id: 1) do |s|
+  s.name = 'かぐらスキー場'
+  s.address = '新潟県南魚沼郡湯沢町三俣742'
+end
+
+Skiresort.find_or_create_by(id: 2) do |s|
+  s.name = 'GALA湯沢スキー場'
+  s.address = '新潟県南魚沼郡湯沢町大字湯沢字茅平1039-2'
+end
+
+Skiresort.find_or_create_by(id: 3) do |s|
+  s.name = 'ルスツリゾート'
+  s.address = '北海道虻田郡留寿都村字泉川13'
+end
+
+Skiresort.find_or_create_by(id: 4) do |s|
+  s.name = 'ニセコ東急 グラン・ヒラフ'
+  s.address = '北海道虻田郡倶知安町ニセコひらふ1条2丁目9番1号'
+end
+
+Skiresort.find_or_create_by(id: 5) do |s|
+  s.name = 'グランデコスノーリゾート'
+  s.address = '福島県耶麻郡北塩原村大字桧原字荒砂沢山1082番93'
+end
+
 
 
 #<labelデータ>
@@ -66,5 +86,5 @@ Recruit.find_or_create_by(
   end_day: '2023/3/4',
   skiresort_id: 1,
   user_id: 2,
-  label_id: '3,4,5,6,7,8,9'
+  label_ids: [3,4,5,6,7,8,9]
 )
