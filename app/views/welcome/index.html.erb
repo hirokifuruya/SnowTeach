@@ -1,13 +1,37 @@
 <h1>ようこそ、SnowTeachへ！</h1>
+<%= image_tag 'SnowTeach.png', size: '300x300' %>
 
 <p>
-  SnowTeachはスノーボードのインストラクターとレッスンを受講したい方をつなげるサービスです。
+  スノーボードをもっと楽しみたい方へ。SnowTeachは、スノーボードのインストラクターとレッスンを受講したい方をつなげるサービスです。アプリを使って、自分に合ったインストラクターを選び、楽しくスキルアップしましょう。
 </p>
-
-<% if user_signed_in? %>
-  <p><%= link_to 'マイページ', user_path(current_user) %></p>
-<% else %>
-  <p><%= link_to '新規登録', new_user_registration_path %></p>
-  <p><%= link_to 'ログイン', new_user_session_path %></p>
-<% end %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">プロのインストラクターとマッチング</h5>
+          <p class="card-text">自分に合ったインストラクターを選ぶことができます。</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">自分に合ったコースを選択</h5>
+          <p class="card-text">自分のレベルに合わせて、コースを選択することができます。初心者から上級者まで、幅広く対応しています。</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">楽しくスキルアップ</h5>
+          <p class="card-text">楽しくスキルアップしましょう。SnowTeachは、初心者でも楽しめるレッスンから、上級者向けのテクニカルなレッスンまで幅広く対応しています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="mt-3">
+  SnowTeachは、安全にスノーボードを楽しむために必要なスキルを身に付けるためのサービスです。一緒にスキルアップしましょう！
+</p> 

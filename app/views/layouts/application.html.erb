@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <header>
-  <%= link_to 'ゲストログイン', sessions_guest_sign_in_path, method: :post %>
-  <%= link_to '管理者ゲストログイン', admin_guest_sign_in_path, method: :post %>
-
+  <head>
     <title>SnowTeach</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -11,16 +8,25 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </header>
+    <%= favicon_link_tag('favicon.ico') %>
+  </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "募集を投稿する", new_recruit_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+    <header class="d-flex justify-content-between align-items-center bg-light py-3">
+        <%= image_tag 'SnowTeach.png', size: '35x35', class: 'ml-4 ' %>
+
+      <nav class="mr-4">
+        <% if user_signed_in? %>
+          <%= link_to "募集を投稿する", new_recruit_path, class: 'mr-4' %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'mr-4' %>
+        <% else %>
+          <%= link_to 'ゲストログイン', sessions_guest_sign_in_path, method: :post, class: 'mr-4' %>
+          <%= link_to '管理者ゲストログイン', admin_guest_sign_in_path, method: :post, class: 'mr-4' %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'mr-4' %>
+          <%= link_to "ログイン", new_user_session_path, class: 'mr-4' %>
+        <% end %>
+      </nav>
+    </header>
 
     <% if notice %>
     <p class="alert alert-notice"><%= notice %></p>

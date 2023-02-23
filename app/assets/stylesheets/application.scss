@@ -15,15 +15,17 @@
  *= require simple_calendar
  */
 
+@import "bootstrap";
+
 header{
 	height: 20px;
 	width:100%;
 	display: flex;;
 	align-items: center;
-	background:#89c7de;
+	background: rgb(243, 242, 242);
 	color:#fff;
 	text-align: center;
-	padding: 20px;
+	padding: 30px;
 }
 
 body{
@@ -47,7 +49,7 @@ body{
 
 footer{
   width: 100%;
-  background-color: #89c7de;
+  background: #6da4b9;
   color: #fff;
   text-align: center;
   padding: 20px 0;

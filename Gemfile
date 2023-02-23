@@ -17,6 +17,8 @@ gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
 gem 'simple_calendar', '~> 2.0'
 gem 'rails-i18n'
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 

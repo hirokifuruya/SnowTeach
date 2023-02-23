@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to recruits_path, alert: exception.message
+    redirect_to recruits_path, alert: "あなたは入れません。"
   end
 end
