@@ -8,15 +8,20 @@
 
 
 
+#<roleデータ>
+Role.create!(name: 'admin')
+Role.create!(name: 'instructor')
+Role.create!(name: 'user')
+
 
 #<userデータ>
 User.create!(
   [
     {email: 'furuya@gmail.com', password: 'furuya@gmail.com', role_id: 1},
     {email: 'instructor1@gmail.com', password: 'instructor1@gmail.com', role_id: 2},
-    {email: 'instructor2@gmail.com', password: 'finstructor2@gmail.com', role_id: 2},
+    {email: 'instructor2@gmail.com', password: 'instructor2@gmail.com', role_id: 2},
     {email: 'general1@gmail.com', password: 'general1@gmail.com', role_id: 3},
-    {email: 'general2@gmail.com', password: 'general2@gmail.com', role_id: 4}
+    {email: 'general2@gmail.com', password: 'general2@gmail.com', role_id: 3}
   ]
     )
 
