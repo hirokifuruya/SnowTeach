@@ -55,26 +55,22 @@ end
 
 
 #<labelデータ>
-Label.find_or_create_by(
-  [
-    {id: 1, name: '初心者' },
-    {id: 2, name: '中級者' },
-    {id: 3, name: '上級者' },
-    {id: 4, name: 'グラトリ' },
-    {id: 5, name: 'キッカー' },
-    {id: 6, name: 'ハーフパイプ' },
-    {id: 7, name: 'カービング' },
-    {id: 8, name: 'スロープスタイル' },
-    {id: 9, name: 'スノーボードクロス' },
-    {id: 10, name: 'ジャイアントスラローム' },
-    {id: 11, name: 'スーパージャイアントスラローム' },
-    {id: 12, name: 'スラローム' },
-    {id: 13, name: 'デュアルスラローム' },
-    {id: 14, name: '小学生' },
-    {id: 15, name: '中学生' },
-    {id: 16, name: '高校生' }
-  ].map(&:stringify_keys)
-)
+    Label.find_or_create_by(id: 1, name: '初心者' )
+    Label.find_or_create_by(id: 2, name: '中級者' )
+    Label.find_or_create_by(id: 3, name: '上級者' )
+    Label.find_or_create_by(id: 4, name: 'グラトリ' )
+    Label.find_or_create_by(id: 5, name: 'キッカー' )
+    Label.find_or_create_by(id: 6, name: 'ハーフパイプ' )
+    Label.find_or_create_by(id: 7, name: 'カービング' )
+    Label.find_or_create_by(id: 8, name: 'スロープスタイル' )
+    Label.find_or_create_by(id: 9, name: 'スノーボードクロス' )
+    Label.find_or_create_by(id: 10, name: 'ジャイアントスラローム' )
+    Label.find_or_create_by(id: 11, name: 'スーパージャイアントスラローム' )
+    Label.find_or_create_by(id: 12, name: 'スラローム' )
+    Label.find_or_create_by(id: 13, name: 'デュアルスラローム' )
+    Label.find_or_create_by(id: 14, name: '小学生' )
+    Label.find_or_create_by(id: 15, name: '中学生' )
+    Label.find_or_create_by(id: 16, name: '高校生' )
 
 #<recruitデータ>
 Recruit.find_or_create_by(
