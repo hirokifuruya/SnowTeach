@@ -81,7 +81,6 @@ Recruit.find_or_create_by(
   start_day: '2023/2/25',
   end_day: '2023/3/4',
   skiresort_id: 1,
-  user_id: 2,
-  labels: Label.where(id: [3, 4, 5, 6, 7, 8, 9])
+  user_id: 2
 )
 
