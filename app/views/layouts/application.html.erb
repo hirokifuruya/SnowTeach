@@ -12,18 +12,20 @@
   </head>
 
   <body>
-    <header>
-      <%= image_tag 'SnowTeach.png', size: '70x70' %>
+    <header class="d-flex justify-content-between align-items-center bg-light py-3">
+        <%= image_tag 'SnowTeach.png', size: '35x35', class: 'ml-4 ' %>
 
-      <% if user_signed_in? %>
-        <%= link_to "募集を投稿する", new_recruit_path %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'ゲストログイン', sessions_guest_sign_in_path, method: :post %>
-        <%= link_to '管理者ゲストログイン', admin_guest_sign_in_path, method: :post %>
-        <%= link_to "新規登録", new_user_registration_path %>
-        <%= link_to "ログイン", new_user_session_path %>
-      <% end %>
+      <nav class="mr-4">
+        <% if user_signed_in? %>
+          <%= link_to "募集を投稿する", new_recruit_path, class: 'mr-4' %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'mr-4' %>
+        <% else %>
+          <%= link_to 'ゲストログイン', sessions_guest_sign_in_path, method: :post, class: 'mr-4' %>
+          <%= link_to '管理者ゲストログイン', admin_guest_sign_in_path, method: :post, class: 'mr-4' %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'mr-4' %>
+          <%= link_to "ログイン", new_user_session_path, class: 'mr-4' %>
+        <% end %>
+      </nav>
     </header>
 
     <% if notice %>
