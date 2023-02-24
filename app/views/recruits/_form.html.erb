@@ -11,27 +11,28 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :"ラベル" %><br>
+<div class="field">
+  <%= form.label :"名前" %>
+  <%= form.text_field :name, placeholder: "山田太郎" %>
+</div>
+
+<div class="field">
+  <%= form.label :"金額" %>
+  <%= form.text_field :money, placeholder: "10000" %>
+</div>
+
+<div class="field">
+  <%= form.label :"詳細" %>
+  <%= form.text_area :detail, placeholder: "スノーボード歴5年" %>
+</div>
+
+
+    <div class="form-group">
+    <%= form.label :"教える内容" %><br>
     <% @labels.each do |label| %>
       <%= check_box_tag "recruit[label_ids][]", label.id.to_s, @recruit.labels.include?(label) %>　　
       <%= label.name %><br>
     <% end %>
-  </div>
-
-  <div class="field">
-    <%= form.label :"名前" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :"金額" %>
-    <%= form.text_field :money %>
-  </div>
-
-  <div class="field">
-    <%= form.label :"詳細" %>
-    <%= form.text_area :detail %>
   </div>
 
   <div class="field">

@@ -33,6 +33,7 @@ class RecruitsController < ApplicationController
   # GET /recruits/1/edit
   def edit
     @recruit = Recruit.find(params[:id])
+    @labels = Label.all
   end
 
   # POST /recruits or /recruits.json

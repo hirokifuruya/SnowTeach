@@ -42,6 +42,8 @@ Rails.application.configure do
 
   config.assets.quiet = true
 
+  config.consider_all_requests_local = false
+
 
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker

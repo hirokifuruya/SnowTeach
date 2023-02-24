@@ -13,11 +13,13 @@
 
   <body>
     <header class="d-flex justify-content-between align-items-center bg-light py-3">
-        <%= image_tag 'SnowTeach.png', size: '35x35', class: 'ml-4 ' %>
+        <%= image_tag 'SnowTeach.png', size: '55x55', class: 'ml-4 ' %>
 
       <nav class="mr-4">
         <% if user_signed_in? %>
           <%= link_to "募集を投稿する", new_recruit_path, class: 'mr-4' %>
+          <%= link_to '投稿一覧画面', recruits_path, class: 'mr-4' %>
+          <%= link_to 'マイページ',  user_session_path, class: 'mr-4' %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'mr-4' %>
         <% else %>
           <%= link_to 'ゲストログイン', sessions_guest_sign_in_path, method: :post, class: 'mr-4' %>

@@ -1,3 +1,42 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* スタイルの追加 */
+
+table {
+  margin: 0 auto;
+}
+
+.reservation-container {
+  margin-bottom: 1rem;
+}
+
+.request-table {
+  display: none;
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.visible .request-table {
+  display: table;
+}
+
+.toggle-label {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+#toggle-favorites {
+  background-color: rgb(67, 22, 218);
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#favorite-teachers {
+  background-color: yellow;
+}
