@@ -8,12 +8,12 @@ RSpec.describe Recruit, type: :model do
       expect(recruit).to be_valid
     end
 
-    it "nameが必須であること" do
+    it "名前が必須であること" do
       recruit.name = nil
       expect(recruit).not_to be_valid
     end
 
-    it "detailが必須であること" do
+    it "詳細が必須であること" do
       recruit.detail = nil
       expect(recruit).not_to be_valid
     end

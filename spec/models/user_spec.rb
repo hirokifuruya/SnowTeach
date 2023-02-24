@@ -10,17 +10,17 @@ RSpec.describe User, type: :model do
         expect(user).to be_valid
       end
 
-      it "emailが必須であること" do
+      it " Eメールが必須であること" do
         user.email = nil
         expect(user).not_to be_valid
       end
 
-      it "passwordが必須であること" do
+      it "パスワードが必須であること" do
         user.password = nil
         expect(user).not_to be_valid
       end
 
-      it "passwordが6文字以上であること" do
+      it "パスワードが6文字以上であること" do
         user.password = "pass"
         expect(user).not_to be_valid
       end
@@ -34,17 +34,17 @@ RSpec.describe User, type: :model do
         expect(user).to be_valid
       end
 
-      it "emailが必須であること" do
+      it "Eメールが必須であること" do
         user.email = nil
         expect(user).not_to be_valid
       end
 
-      it "passwordが必須であること" do
+      it "パスワードが必須であること" do
         user.password = nil
         expect(user).not_to be_valid
       end
 
-      it "passwordが6文字以上であること" do
+      it "パスワードが6文字以上であること" do
         user.password = "pass"
         expect(user).not_to be_valid
       end
