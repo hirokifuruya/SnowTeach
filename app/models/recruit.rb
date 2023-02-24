@@ -4,4 +4,7 @@ class Recruit < ApplicationRecord
   has_many :requests, dependent: :destroy
   belongs_to :skiresort
   belongs_to :user
+
+  validates :name, presence: true
+  validates :detail, presence: true
 end
