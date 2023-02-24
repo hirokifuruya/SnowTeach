@@ -17,7 +17,7 @@ class Ability
       can :create, Request
       cannot :read, Request
       cannot :update, Request
-      cannot :destroy, Request
+      can :destroy, Request
     else
       can :read, :all
     end

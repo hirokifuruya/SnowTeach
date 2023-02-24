@@ -13,13 +13,35 @@
   <% end %>
 
 <%= form.hidden_field :recruit_id, value: @recruit.id %>
+
+  <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
+    <strong>名前:</strong>
+    <%= @recruit.name %>
+  </p>
+
+  <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
+    <strong>お金:</strong>
+    <%= @recruit.money %>
+  </p>
+
+  <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
+    <strong>詳細:</strong>
+    <%= @recruit.detail %>
+  </p>
+
+  <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
+    <strong>教える内容:</strong>
+    <% @recruit.labels.each do |label| %>
+      <%= label.name %>
+    <% end %>
+  </p>
   <div class="field">
-    <%= form.label :"終了日" %>
+    <%= form.label :"予約日" %>
     <%= form.date_field :date %>
   </div>
 
 
   <div class="actions">
-    <%= form.submit :"登録"%>
+    <%= form.submit :"予約を確定する"%>
   </div>
 <% end %>

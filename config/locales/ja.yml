@@ -6,3 +6,7 @@ ja:
   simple_calendar:
     previous: "<<"
     next: ">>"
+  role:
+    admin: "管理者"
+    instructor: "講師"
+    general: "一般ユーザー"

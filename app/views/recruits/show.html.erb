@@ -1,56 +1,55 @@
-<header>
-  <%= link_to '戻る', recruits_path %>
-</header>
 
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h1>投稿詳細</h1>
-      <p>
+      <h1 style="font-family: Arial, sans-serif; font-size: 32px; line-height: 1.5;">投稿詳細</h1>
+      <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
         <strong>名前:</strong>
         <%= @recruit.name %>
       </p>
 
-
       <%= render 'users/favorite' %>
 
-      <p>
+      <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
         <strong>お金:</strong>
         <%= @recruit.money %>
       </p>
 
-      <p>
+      <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
         <strong>詳細:</strong>
         <%= @recruit.detail %>
       </p>
 
-      <p>
-        <strong>開始日:</strong>
-        <%= @recruit.start_day&.strftime('%Y/%m/%d') %>
-      </p>
-
-      <p>
-        <strong>終了日:</strong>
-        <%= @recruit.end_day&.strftime('%Y/%m/%d') %>
-      </p>
-
-      <p>
-        <strong>スキー場:</strong>
-        <%= @recruit.skiresort.name %>
-      </p>
-
-      <p>
-        <strong>住所:</strong>
-        <%= @recruit.skiresort.address %>
-      </p>
-
-      <p>
-        <strong>ラベル:</strong>
+      <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
+        <strong>教える内容:</strong>
         <% @recruit.labels.each do |label| %>
           <%= label.name %>
         <% end %>
       </p>
 
+      <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
+        <strong>開始日:</strong>
+        <%= @recruit.start_day&.strftime('%Y/%m/%d') %>
+      </p>
+
+      <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
+        <strong>終了日:</strong>
+        <%= @recruit.end_day&.strftime('%Y/%m/%d') %>
+      </p>
+
+      <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
+        <strong>スキー場:</strong>
+        <%= @recruit.skiresort.name %>
+      </p>
+
+      <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
+        <strong>住所:</strong>
+        <%= @recruit.skiresort.address %>
+      </p>
+
+      <div style="margin: 20px 0;">
+        <div id="map" style="width: 100%; height: 300px;"></div>
+      </div>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwsDTd4yM8C6XTgHivmYjxzUM3nyvJ3Wo"></script>
         <script>

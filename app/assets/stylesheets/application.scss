@@ -17,16 +17,17 @@
 
 @import "bootstrap";
 
-header{
-	height: 20px;
-	width:100%;
-	display: flex;;
-	align-items: center;
-	background: rgb(243, 242, 242);
-	color:#fff;
-	text-align: center;
-	padding: 30px;
+header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(243, 242, 242);
+  padding: 10px;
+  color: #000;
 }
+
 
 body{
   width:100%;
