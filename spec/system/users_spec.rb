@@ -2,44 +2,46 @@ require 'rails_helper'
 
 # Users新規登録
 RSpec.describe "Users", type: :system do
-  it 'ユーザーを登録できること' do
-    visit new_user_registration_path
-    fill_in 'Email', with: 'test@example.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Password confirmation', with: 'password'
-    find("option[value='2']").select_option
-    click_button 'アカウント登録'
-    sleep(10)
-    expect(page).to have_content 'アカウント登録が完了しました。'
-  end
+    let(:general_role) { create(:general) }
+
+    it 'ユーザーを登録できること' do
+      visit new_user_registration_path
+      fill_in 'Eメール', with: 'test@example.com'
+      fill_in 'user[password]', with: 'password'
+      fill_in 'user[password_confirmation]', with: 'password'
+      select(general_role.name, from: 'user[role_id]')
+      click_button 'アカウント登録'
+      expect(page).to have_content 'アカウント登録が完了しました。'
+    end
 
   it '不正な値では登録できないこと' do
     visit new_user_registration_path
     fill_in 'user[email]', with: ''
     fill_in 'user[password]', with: ''
     click_button 'アカウント登録'
-    expect(page).to have_content 'Emailを入力してください'
-    expect(page).to have_content 'Passwordを入力してください'
+    expect(page).to have_content 'Eメールを入力してください'
+    expect(page).to have_content 'パスワードを入力してください'
   end
 end
 
+
 # Usersログイン
 RSpec.describe 'Users', type: :system do
-  let(:user) { create(:user, role: create(:role)) }
+  let(:user) { create(:user, role: create(:admin)) }
 
   it 'ログインできること' do
     visit new_user_session_path
-    fill_in 'user[email]', with: user.email
-    fill_in 'user[password]', with: user.password
+    fill_in 'Eメール', with: user.email
+    fill_in 'パスワード', with: user.password
     click_button 'ログイン'
     expect(page).to have_content 'ログインしました。'
   end
 
   it '不正な値ではログインできないこと' do
     visit new_user_session_path
-    fill_in 'user[email]', with: ''
-    fill_in 'user[password]', with: ''
+    fill_in 'Eメール', with: ''
+    fill_in 'パスワード', with: ''
     click_button 'ログイン'
-    expect(page).to have_content 'Emailまたはパスワードが違います。'
+    expect(page).to have_content 'Eメールまたはパスワードが違います。'
   end
 end

@@ -13,17 +13,17 @@
 
 <div class="field">
   <%= form.label :"名前" %>
-  <%= form.text_field :name, placeholder: "山田太郎" %>
+  <%= form.text_field :name, placeholder: "山田太郎", name: "recruit[name]" %>
 </div>
 
 <div class="field">
   <%= form.label :"金額" %>
-  <%= form.text_field :money, placeholder: "10000" %>
+  <%= form.text_field :money, placeholder: "10000", name: "recruit[money]" %>
 </div>
 
 <div class="field">
   <%= form.label :"詳細" %>
-  <%= form.text_area :detail, placeholder: "スノーボード歴5年" %>
+  <%= form.text_area :detail, placeholder: "スノーボード歴5年", name: "recruit[dateil]" %>
 </div>
 
 
