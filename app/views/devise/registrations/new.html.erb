@@ -21,10 +21,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :"インストラクターは2,一般ユーザーは3を入力してください" %><br />
-    <%= f.text_field :role_id, autocomplete: true %>
-  </div>
+<div class="field">
+  <%= f.label :"インストラクター、一般ユーザー選択してください。" %><br />
+  <%= f.select :role_id, { 'インストラクター': 2, '一般ユーザー': 3 } %>
+</div>
 
   <div class="actions">
     <%= f.submit t('.sign_up') %>
