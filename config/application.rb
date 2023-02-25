@@ -11,6 +11,7 @@ module SnowTeach
 
     config.i18n.available_locales = :ja
     config.i18n.default_locale = :ja
+    config.i18n.fallbacks = [I18n.default_locale]
     config.generators do |g|
       g.test_framework :rspec,
                        model_specs: true,

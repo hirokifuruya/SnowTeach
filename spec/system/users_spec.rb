@@ -7,9 +7,9 @@ RSpec.describe "Users", type: :system do
     fill_in 'Email', with: 'test@example.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
-    select_option = find("select[name='user[role_id]'] option[value='2']")
-    select_option.select_option
+    find("option[value='2']").select_option
     click_button 'アカウント登録'
+    sleep(10)
     expect(page).to have_content 'アカウント登録が完了しました。'
   end
 

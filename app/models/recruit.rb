@@ -7,4 +7,7 @@ class Recruit < ApplicationRecord
 
   validates :name, presence: true
   validates :detail, presence: true
+  validates :start_day, presence: true
+  validates :end_day, presence: true
+  validates :skiresort_id, presence: true
 end

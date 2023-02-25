@@ -1,12 +1,29 @@
 ja:
   activerecord:
-  errors:
-    messages:
-      record_invalid: "バリデーションに失敗しました: %{errors}"
-  simple_calendar:
-    previous: "<<"
-    next: ">>"
-  role:
-    admin: "管理者"
-    instructor: "講師"
-    general: "一般ユーザー"
+    errors:
+      models:
+        recruit:
+          attributes:
+            name:
+              blank: "名前を入力してください"
+            detail:
+              blank: "詳細を入力してください"
+            start_day:
+              blank: "開始日を入力してください"
+            end_day:
+              blank: "終了日を入力してください"
+    models:
+      role:
+        values:
+          admin: "管理者"
+          instructor: "講師"
+          general: "一般ユーザー"
+    attributes:
+      recruit:
+        name: "名前"
+        money: "金額"
+        detail: "詳細"
+        label_ids: "教える内容"
+        start_day: "開始日"
+        end_day: "終了日"
+        skiresort_id: "スキー場"
