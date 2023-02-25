@@ -39,4 +39,35 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+  config.model 'Favorite' do
+    label 'お気に入り'
+  end
+
+  config.model 'Label' do
+    label 'ラベル'
+  end
+
+  config.model 'Labeling' do
+    label 'ラベリング'
+  end
+
+  config.model 'Recruit' do
+    label '募集'
+  end
+
+  config.model 'Request' do
+    label 'リクエスト'
+  end
+
+  config.model 'Role' do
+    label 'ロール'
+  end
+
+  config.model 'Skiresort' do
+    label 'スキー場'
+  end
+
+  config.model 'User' do
+    label 'ユーザー'
+  end
 end
