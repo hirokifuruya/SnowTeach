@@ -7,6 +7,7 @@ Bundler.require(*Rails.groups)
 module SnowTeach
   class Application < Rails::Application
     config.load_defaults 6.1
+    config.generators.system_tests = nil
 
     config.i18n.available_locales = :ja
     config.i18n.default_locale = :ja
