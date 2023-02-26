@@ -5,39 +5,33 @@ RSpec.describe "Requests", type: :system do
   let(:general_user) { FactoryBot.create(:general_user) }
   let!(:recruit) { FactoryBot.create(:recruit, user: instructor_user) }
 
-  describe "ログインしている場合" do
-    before do
-      sign_in general_user
-      visit recruit_path(recruit)
-    end
+  describe "予約に関するテスト" do
+    context '一般ユーザーがログインしている場合' do
+      before do
+        sign_in general_user
+        visit recruit_path(recruit)
+      end
 
-    it "お気に入りに追加できること" do
-      click_on "お気に入りする"
-      click_on "お気に入りを表示する"
-      expect(page).to have_content "user1@dive.com"
-    end
+      it "自分が予約したものが表示されること" do
+        click_link('予約する', match: :first)
+        click_on "予約を確定する"
+        visit user_session_path
+        check '表示する'
+        expect(page).to have_content "テスト投稿"
+      end
 
-    it "お気に入りから削除できること" do
-      click_on "お気に入りする"
-      click_on "投稿一覧画面"
-      visit recruit_path(recruit)
-      click_on "お気に入り解除"
-      click_on "お気に入りを表示する"
-      expect(page).to have_content ""
-    end
-  end
-
-  describe "ログインしていない場合" do
-    before do
-      visit recruit_path(recruit)
-    end
-
-    it "お気に入りに追加できないこと" do
-      expect(page).to_not have_content "お気に入り登録"
-    end
-
-    it "お気に入りから削除できないこと" do
-      expect(page).to_not have_content "お気に入り解除"
+      it "自分が予約した物をキャンセルする" do
+        click_link('予約する', match: :first)
+        click_on "予約を確定する"
+        visit user_session_path
+        check '表示する'
+        click_link '削除'
+        sleep(1)
+        page.accept_confirm
+        visit user_session_path
+        expect(page).to have_content "現在、予約した募集はありません。"
+      end
     end
   end
 end
+
