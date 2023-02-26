@@ -1,12 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Favorites", type: :system do
+RSpec.describe "Requests", type: :system do
   let(:instructor_user) { FactoryBot.create(:instructor_user) }
   let(:general_user) { FactoryBot.create(:general_user) }
   let!(:recruit) { FactoryBot.create(:recruit, user: instructor_user) }
 
-  describe "お気に入りに関するテスト" do
-    context 'ログインしている場合' do
+  describe "ログインしている場合" do
     before do
       sign_in general_user
       visit recruit_path(recruit)
@@ -27,9 +26,8 @@ RSpec.describe "Favorites", type: :system do
       expect(page).to have_content ""
     end
   end
-end
 
-  context "ログインしていない場合" do
+  describe "ログインしていない場合" do
     before do
       visit recruit_path(recruit)
     end
