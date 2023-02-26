@@ -9,7 +9,7 @@ FactoryBot.define do
     association :skiresort, factory: :naeba
   end
 
-    factory :recruit_1, class: Recruit do
+    factory :recruit_test, class: Recruit do
       name { "テスト投稿1" }
       money { "10000円" }
       detail { "テスト投稿1の詳細" }
