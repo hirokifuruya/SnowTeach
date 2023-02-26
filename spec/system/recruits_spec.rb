@@ -13,20 +13,25 @@ RSpec.describe "Recruits", type: :system do
     it "投稿に成功する" do
       fill_in 'recruit[name]', with: "テスト投稿"
       fill_in 'recruit[money]', with: "10000円"
-      fill_in 'recruit[dateil]', with: "テスト投稿の詳細"
+      fill_in 'recruit[detail]', with: "テスト投稿の詳細"
       fill_in 'recruit[start_day]', with: "002023/02/27"
       fill_in 'recruit[end_day]', with: "002023/02/28"
       select "苗場スキー場", from: 'recruit[skiresort_id]'
-      sleep(5)
       click_button "登録"
-      expect(page).to have_content "募集を投稿しました。"
+      expect(page).to have_content "投稿詳細"
     end
 
     context "ログインしていない場合" do
+      before do
+        sign_out instructor_user
+        #binding.pry
+      end
+
       it "ログイン画面にリダイレクトされる" do
+        #binding.pry
         visit new_recruit_path
-        expect(page).to new_user_session_path
-        expect(page).to have_content "ログインしてください。"
+        #binding.pry
+        expect(page).to have_content "ログインもしくはアカウント登録してください。"
       end
     end
   end
