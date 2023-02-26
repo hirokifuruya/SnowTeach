@@ -39,7 +39,7 @@ class RecruitsController < ApplicationController
   # POST /recruits or /recruits.json
   def create
     @recruit = current_user.recruit.build(recruit_params)
-
+    @labels = Label.all
     respond_to do |format|
       if @recruit.save
         format.html { redirect_to recruit_url(@recruit), notice: "Recruit was successfully created." }

@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :email, presence: true
+  validates :password, presence: true, length: { minimum: 6 }
   belongs_to :role
   has_many :active_favorites, class_name: "Favorite", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_favorites, class_name: "Favorite", foreign_key: "followed_id", dependent: :destroy

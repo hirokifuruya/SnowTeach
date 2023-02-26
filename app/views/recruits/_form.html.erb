@@ -1,39 +1,39 @@
 <%= form_with(model: recruit) do |form| %>
-  <% if recruit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(recruit.errors.count, "error") %> prohibited this recruit from being saved:</h2>
+<% if @recruit.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@recruit.errors.count, "error") %> prohibited this recruit from being saved:</h2>
+    <ul>
+      <% @recruit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-      <ul>
-        <% recruit.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
 <div class="field">
   <%= form.label :"名前" %>
-  <%= form.text_field :name, placeholder: "山田太郎" %>
+  <%= form.text_field :name, placeholder: "山田太郎", name: "recruit[name]" %>
 </div>
 
 <div class="field">
   <%= form.label :"金額" %>
-  <%= form.text_field :money, placeholder: "10000" %>
+  <%= form.text_field :money, placeholder: "10000", name: "recruit[money]" %>
 </div>
 
 <div class="field">
   <%= form.label :"詳細" %>
-  <%= form.text_area :detail, placeholder: "スノーボード歴5年" %>
+  <%= form.text_area :detail, placeholder: "スノーボード歴5年", name: "recruit[detail]" %>
 </div>
 
 
-    <div class="form-group">
-    <%= form.label :"教える内容" %><br>
-    <% @labels.each do |label| %>
-      <%= check_box_tag "recruit[label_ids][]", label.id.to_s, @recruit.labels.include?(label) %>　　
-      <%= label.name %><br>
-    <% end %>
-  </div>
+<div class="form-group">
+  <%= form.label :"教える内容" %><br>
+  <% @labels.each do |label| %>
+    <%= check_box_tag "recruit[label_ids][]", label.id.to_s, @recruit.labels.include?(label) %>　　
+    <%= label.name %><br>
+  <% end %>
+</div>
 
   <div class="field">
     <%= form.label :"開始日" %>
@@ -49,7 +49,6 @@
     <%= form.label :"スキー場" %>
     <%= form.collection_select :skiresort_id, Skiresort.all, :id, :name %>
   </div>
-
 
   <div class="actions">
     <%= form.submit :"登録"%>

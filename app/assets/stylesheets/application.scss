@@ -17,6 +17,11 @@
 
 @import "bootstrap";
 
+html{
+  min-height: 100%;
+  position: relative;
+}
+
 header {
   height: 50px;
   width: 100%;
@@ -32,7 +37,7 @@ header {
 body{
   width:100%;
   text-align:center;
-  margin: 0;
+  margin-bottom: 60px;
 }
 #wrap{
   width: 960px;
@@ -48,13 +53,15 @@ body{
   float:right;
 }
 
-footer{
+footer {
   width: 100%;
   background: #6da4b9;
   color: #fff;
   text-align: center;
   padding: 20px 0;
-
-position: absolute;
+  //position: absolute;
+  left: 0;
   bottom: 0;
+  z-index: 999;
+  margin-top: auto;
 }
