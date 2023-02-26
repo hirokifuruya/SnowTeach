@@ -46,3 +46,9 @@ ja:
           label: "スキー場"
         user:
           label: "ユーザー"
+          attributes:
+            email:
+              taken: "このメールアドレスは既に登録されています。"
+            password:
+              too_short: "パスワードは%{count}文字以上で設定してください。"
+              confirmation: "パスワードが一致しません。"
