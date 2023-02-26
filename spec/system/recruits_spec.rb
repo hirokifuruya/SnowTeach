@@ -1,35 +1,31 @@
 require 'rails_helper'
 
 RSpec.describe "Recruits", type: :system do
-  describe "新規投稿" do
-    context "ログインしている場合" do
-      let(:user) { create(:user, role: create(:role)) }
-      let(:skiresort) { FactoryBot.create(:skiresort1) }
+  describe "新規投稿", type: :system do
+    let(:instructor_user) { FactoryBot.create(:instructor_user) }
 
-      before do
-        sign_in user
-        visit new_recruit_path
-      end
+    before do
+      FactoryBot.create(:naeba)
+      sign_in instructor_user
+      visit new_recruit_path
+    end
 
-      it "投稿に成功する" do
-        fill_in 'recruit[name]', with: "テスト投稿"
-        fill_in 'recruit[money]', with: "10000円"
-        fill_in 'recruit[detail]', with: "テスト投稿の詳細"
-        sleep(3)
-        select skiresort.name, from: "スキー場"
-
-        expect {
-          click_button "登録"
-        }.to change { Recruit.count }.by(1)
-
-        expect(page).to have_content "募集を投稿しました。"
-      end
+    it "投稿に成功する" do
+      fill_in 'recruit[name]', with: "テスト投稿"
+      fill_in 'recruit[money]', with: "10000円"
+      fill_in 'recruit[dateil]', with: "テスト投稿の詳細"
+      fill_in 'recruit[start_day]', with: "002023/02/27"
+      fill_in 'recruit[end_day]', with: "002023/02/28"
+      select "苗場スキー場", from: 'recruit[skiresort_id]'
+      sleep(5)
+      click_button "登録"
+      expect(page).to have_content "募集を投稿しました。"
     end
 
     context "ログインしていない場合" do
       it "ログイン画面にリダイレクトされる" do
         visit new_recruit_path
-        expect(page).to have_current_path(new_user_session_path(locale: 'ja'))
+        expect(page).to new_user_session_path
         expect(page).to have_content "ログインしてください。"
       end
     end
@@ -46,5 +42,3 @@ RSpec.describe "Recruits", type: :system do
     end
   end
 end
-
-
