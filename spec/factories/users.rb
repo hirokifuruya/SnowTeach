@@ -3,7 +3,7 @@ FactoryBot.define do
     email { "admin@dive.com" }
     password { "123456" }
     password_confirmation { "123456" }
-    role { assertion :admin }
+    role { association :admin }
   end
 
   factory :instructor_user, class: User do
@@ -12,6 +12,13 @@ FactoryBot.define do
     password_confirmation { "222222" }
     role { association :instructor }
   end
+
+    factory :instructor_user2, class: User do
+      email { "user11@dive.com" }
+      password { "222222" }
+      password_confirmation { "222222" }
+      role { :instructor }
+    end
 
   factory :general_user, class: User do
     email { "user2@dive.com" }

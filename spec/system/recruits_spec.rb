@@ -37,13 +37,18 @@ RSpec.describe "Recruits", type: :system do
   end
 
   describe "一覧表示" do
-    let!(:recruit1) { FactoryBot.create(:recruit) }
-    let!(:recruit2) { FactoryBot.create(:recruit) }
+    let(:instructor_user) { FactoryBot.create(:instructor_user) }
+    let!(:recruit_1) { FactoryBot.create(:recruit_1) }
+    let!(:recruit_2) { FactoryBot.create(:recruit_2) }
+
+    before do
+      sign_in instructor_user
+    end
 
     it "一覧が表示される" do
       visit recruits_path
-      expect(page).to have_content recruit1.name
-      expect(page).to have_content recruit2.name
+      expect(page).to have_content recruit_1.name
+      expect(page).to have_content recruit_2.name
     end
   end
 end
