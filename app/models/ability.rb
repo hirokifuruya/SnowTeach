@@ -5,13 +5,13 @@ class Ability
 
   def initialize(user)
     case user&.role&.name
-    when "admin"
+    when "管理者"
       can :access, :rails_admin
       can :manage, :all
-    when "instructor"
+    when "インストラクター"
       can :manage, :all
       cannot :access, :rails_admin
-    when "general"
+    when "一般ユーザー"
       can :read, :all
       cannot :access, :rails_admin
       can :create, Request

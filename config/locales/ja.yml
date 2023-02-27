@@ -25,7 +25,7 @@ ja:
           skiresort_id: "スキー場"
       models:
         role:
-          values:
+          name:
             admin: "管理者"
             instructor: "講師"
             general: "一般ユーザー"
@@ -50,5 +50,5 @@ ja:
             email:
               taken: "このメールアドレスは既に登録されています。"
             password:
-              too_short: "パスワードは%{count}文字以上で設定してください。"
+              too_short: "は%{count}文字以上で設定してください。"
               confirmation: "パスワードが一致しません。"

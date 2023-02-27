@@ -9,9 +9,9 @@
 
 
 #<roleデータ>
-Role.create!(name: "admin") unless Role.exists?(name: "admin")
-Role.create!(name: "instructor") unless Role.exists?(name: "instructor")
-Role.create!(name: "general") unless Role.exists?(name: "general")
+Role.create!(name: "管理者") unless Role.exists?(name: "管理者")
+Role.create!(name: "インストラクター") unless Role.exists?(name: "インストラクター")
+Role.create!(name: "一般ユーザー") unless Role.exists?(name: "一般ユーザー")
 
 
 
@@ -78,58 +78,53 @@ Recruit.find_or_create_by(
   name: '平野歩夢',
   money: '100,000円',
   detail: 'オリンピック金メダリスト',
-  label_id: 3,
   start_day: '2023/2/25',
   end_day: '2023/3/4',
   skiresort_id: 1,
   user_id: 2
-)
+).labels << Label.find_by(name: '初心者')
 
 Recruit.find_or_create_by(
   id: 2,
   name: '高橋和載',
   money: '15,000円',
   detail: 'スノーボード歴5年,優しく教えます。',
-  label_id: 1,
   start_day: '2023/2/28',
   end_day: '2023/3/6',
   skiresort_id: 4,
   user_id: 2
-)
+).labels << Label.find_by(name: 'カービング')
 
 Recruit.find_or_create_by(
   id: 3,
   name: '坂本(さかもっちゃん)',
   money: '30,000円',
   detail: '真面目に教えますよ。',
-  label_id: 5,
   start_day: '2023/3/5',
   end_day: '2023/3/8',
   skiresort_id: 5,
   user_id: 3
-)
+).labels << Label.find_by(name: 'キッカー')
 
 Recruit.find_or_create_by(
   id: 4,
   name: '箱崎(はこにぃ)',
   money: '20,000円',
   detail: 'スノボ歴10年、優しいオーラ全開',
-  label_id: 8,
   start_day: '2023/2/25',
   end_day: '2023/3/3',
   skiresort_id: 3,
   user_id: 3
-)
+).labels << Label.find_by(name: 'スーパージャイアントスラローム')
 
 Recruit.find_or_create_by(
   id: 5,
   name: '鶴田(つるけん)',
   money: '50,000円',
   detail: 'スノボ歴15年、的確に教えます。',
-  label_id: 11,
   start_day: '2023/3/4',
   end_day: '2023/3/10',
   skiresort_id: 2,
   user_id: 3
-)
+).labels << Label.find_by(name: '上級者')
 
