@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :email, presence: true
   validates :password, presence: true, length: { minimum: 6 }
+  validates :name, presence: true
   belongs_to :role
   has_many :active_favorites, class_name: "Favorite", foreign_key: "follower_id", dependent: :destroy
   has_many :passive_favorites, class_name: "Favorite", foreign_key: "followed_id", dependent: :destroy
@@ -15,6 +16,7 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by(email: 'guest@example.com') do |user|
+      user.name = 'ゲスト'
       user.password = SecureRandom.urlsafe_base64
       user.email = 'guest@example.com'
       user.role_id = "3"
@@ -23,6 +25,7 @@ class User < ApplicationRecord
 
   def self.admin_guest
     find_or_create_by(email: 'admin@example.com') do |user|
+      user.name = '管理者ゲスト'
       user.password = SecureRandom.urlsafe_base64
       user.email = 'admin@example.com'
       user.role_id = "1"

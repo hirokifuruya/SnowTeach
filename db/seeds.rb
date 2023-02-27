@@ -18,11 +18,14 @@ Role.create!(name: "一般ユーザー") unless Role.exists?(name: "一般ユー
 #<userデータ>
 User.create!(
   [
-    {email: 'furuya@gmail.com', password: 'furuya@gmail.com', role_id: 1},
-    {email: 'instructor1@gmail.com', password: 'instructor1@gmail.com', role_id: 2},
-    {email: 'instructor2@gmail.com', password: 'instructor2@gmail.com', role_id: 2},
-    {email: 'general1@gmail.com', password: 'general1@gmail.com', role_id: 3},
-    {email: 'general2@gmail.com', password: 'general2@gmail.com', role_id: 3}
+    {name: '古谷', email: 'furuya@gmail.com', password: 'furuya@gmail.com', role_id: 1},
+    {name: '平野', email: 'instructor1@gmail.com', password: 'instructor1@gmail.com', role_id: 2},
+    {name: '高橋', email: 'instructor2@gmail.com', password: 'instructor2@gmail.com', role_id: 2},
+    {name: '坂本', email: 'instructor3@gmail.com', password: 'instructor3@gmail.com', role_id: 2},
+    {name: '箱崎', email: 'instructor4@gmail.com', password: 'instructor4@gmail.com', role_id: 2},
+    {name: '鶴田', email: 'instructor5@gmail.com', password: 'instructor5@gmail.com', role_id: 2},
+    {name: '田中', email: 'general1@gmail.com', password: 'general1@gmail.com', role_id: 3},
+    {name: '鈴木', email: 'general2@gmail.com', password: 'general2@gmail.com', role_id: 3}
   ].reject { |user| User.exists?(email: user[:email]) }
     )
 
@@ -74,7 +77,6 @@ end
 
 #<recruitデータ>
 Recruit.find_or_create_by(
-  id: 1,
   name: '平野歩夢',
   money: '100,000円',
   detail: 'オリンピック金メダリスト',
@@ -85,46 +87,42 @@ Recruit.find_or_create_by(
 ).labels << Label.find_by(name: '初心者')
 
 Recruit.find_or_create_by(
-  id: 2,
   name: '高橋和載',
   money: '15,000円',
   detail: 'スノーボード歴5年,優しく教えます。',
   start_day: '2023/2/28',
   end_day: '2023/3/6',
   skiresort_id: 4,
-  user_id: 2
+  user_id: 3
 ).labels << Label.find_by(name: 'カービング')
 
 Recruit.find_or_create_by(
-  id: 3,
   name: '坂本(さかもっちゃん)',
   money: '30,000円',
   detail: '真面目に教えますよ。',
   start_day: '2023/3/5',
   end_day: '2023/3/8',
   skiresort_id: 5,
-  user_id: 3
+  user_id: 4
 ).labels << Label.find_by(name: 'キッカー')
 
 Recruit.find_or_create_by(
-  id: 4,
   name: '箱崎(はこにぃ)',
   money: '20,000円',
   detail: 'スノボ歴10年、優しいオーラ全開',
   start_day: '2023/2/25',
   end_day: '2023/3/3',
   skiresort_id: 3,
-  user_id: 3
+  user_id: 5
 ).labels << Label.find_by(name: 'スーパージャイアントスラローム')
 
 Recruit.find_or_create_by(
-  id: 5,
   name: '鶴田(つるけん)',
   money: '50,000円',
   detail: 'スノボ歴15年、的確に教えます。',
   start_day: '2023/3/4',
   end_day: '2023/3/10',
   skiresort_id: 2,
-  user_id: 3
+  user_id: 6
 ).labels << Label.find_by(name: '上級者')
 

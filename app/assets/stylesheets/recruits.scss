@@ -16,3 +16,12 @@
 .search-button:hover {
   background-color: #0062cc;
 }
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
