@@ -3,13 +3,13 @@
 
 <%= form_tag(recruits_path, method: :get) do %>
   <h2>投稿検索</h2>
+    <%= label_tag(:search, "インストラクター検索") %>
   <div>
-    <%= label_tag(:search, "検索") %>
-    <%= text_field_tag(:search, nil, placeholder: "キーワードを入力してください") %>
+    <%= text_field_tag(:search, nil, placeholder: "名前を入力してください") %>
   </div>
-
-  <div>
+  <br>
     <%= label_tag(:skiresort_id, "スキー場") %>
+  <div>
     <%= select_tag(:skiresort_id, options_from_collection_for_select(Skiresort.all, :id, :name), prompt: "選択してください") %>
   </div>
   <h2>教える内容</h2>

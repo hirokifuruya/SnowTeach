@@ -1,5 +1,7 @@
 class RecruitsController < ApplicationController
   before_action :set_recruit, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :check_ownership, only: [:edit, :update, :destroy]
   authorize_resource
 
   # GET /recruits or /recruits.json
@@ -40,13 +42,17 @@ class RecruitsController < ApplicationController
   def create
     @recruit = current_user.recruit.build(recruit_params)
     @labels = Label.all
-    respond_to do |format|
-      if @recruit.save
-        format.html { redirect_to recruit_url(@recruit), notice: "正常に投稿されました。" }
-        format.json { render :show, status: :created, location: @recruit }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recruit.errors, status: :unprocessable_entity }
+    if @recruit.start_day > @recruit.end_day
+      redirect_to new_recruit_path, alert: '開始日は終了日より前にしてください'
+    else
+      respond_to do |format|
+        if @recruit.save
+          format.html { redirect_to recruit_url(@recruit), notice: "正常に投稿されました。" }
+          format.json { render :show, status: :created, location: @recruit }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @recruit.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -83,6 +89,13 @@ class RecruitsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def recruit_params
       params.require(:recruit).permit(:name, :money, :detail, :start_day, :end_day, :skiresort_id, label_ids: [])
+    end
+
+    def check_ownership
+      recruit = Recruit.find(params[:id])
+      unless recruit.user == current_user
+        redirect_to recruits_path, alert: "他のユーザーの投稿は編集できません"
+      end
     end
 end
 
