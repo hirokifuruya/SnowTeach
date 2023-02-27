@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to recruits_path, alert: "あなたは入れません。"
+    redirect_to user_session_path
   end
 
   def not_authenticated
