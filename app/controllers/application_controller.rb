@@ -19,10 +19,6 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
-  def after_sign_out_path_for(resource)
-    welcome_path
-  end
-
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to recruits_path, alert: "あなたは入れません。"
   end
