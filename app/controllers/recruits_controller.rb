@@ -42,7 +42,7 @@ class RecruitsController < ApplicationController
     @labels = Label.all
     respond_to do |format|
       if @recruit.save
-        format.html { redirect_to recruit_url(@recruit), notice: "Recruit was successfully created." }
+        format.html { redirect_to recruit_url(@recruit), notice: "正常に投稿されました。" }
         format.json { render :show, status: :created, location: @recruit }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class RecruitsController < ApplicationController
   def update
     respond_to do |format|
       if @recruit.update(recruit_params)
-        format.html { redirect_to recruit_url(@recruit), notice: "Recruit was successfully updated." }
+        format.html { redirect_to recruit_url(@recruit), notice: "正常に投稿が更新しました。" }
         format.json { render :show, status: :ok, location: @recruit }
       else
         format.html { render :edit, status: :unprocessable_entity }
