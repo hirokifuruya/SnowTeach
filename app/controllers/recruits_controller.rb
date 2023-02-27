@@ -42,7 +42,7 @@ class RecruitsController < ApplicationController
   def create
     @recruit = current_user.recruit.build(recruit_params)
     @labels = Label.all
-    if @recruit.start_day > @recruit.end_day
+    if @recruit.start_day.present? && @recruit.end_day.present? && @recruit.start_day > @recruit.end_day
       redirect_to new_recruit_path, alert: '開始日は終了日より前にしてください'
     else
       respond_to do |format|
@@ -75,7 +75,7 @@ class RecruitsController < ApplicationController
     @recruit.destroy
 
     respond_to do |format|
-      format.html { redirect_to recruits_url, notice: "Recruit was successfully destroyed." }
+      format.html { redirect_to recruits_url, notice: "募集を削除しました。" }
       format.json { head :no_content }
     end
   end
