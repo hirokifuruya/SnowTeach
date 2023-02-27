@@ -1,14 +1,14 @@
 FactoryBot.define do
   factory :admin, class: Role do
-    name { 'admin' }
+    name { '管理者' }
   end
 
   factory :instructor, class: Role do
-    name { 'instructor' }
+    name { 'インストラクター' }
   end
 
   factory :general, class: Role do
-    name { 'general' }
+    name { '一般ユーザー' }
   end
 end
 

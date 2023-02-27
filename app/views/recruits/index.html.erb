@@ -59,7 +59,7 @@
         <td><button type="button" class="btn btn-outline-secondary"><%= link_to '詳細', recruit %></button></td>
           <% if current_user == recruit.user %>
             <td><button type="button" class="btn btn-outline-secondary"><%= link_to '編集', edit_recruit_path(recruit) %></button></td>
-            <td><button type="button" class="btn btn-outline-secondary"><%= link_to '削除', recruit, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+            <td><button type="button" class="btn btn-outline-secondary"><%= link_to '削除', recruit, method: :delete, data: { confirm: '本当に削除していいですか？' } %></button></td>
           <% end %>
       </tr>
     <% end %>
