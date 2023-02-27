@@ -1,4 +1,5 @@
 <h1>マイページ</h1>
+<p>名前: <%= current_user.name %></p>
 <p>メールアドレス: <%= current_user.email %></p>
 <p>権限: <%= current_user.role.name %></p>
 
@@ -59,7 +60,7 @@
   <button id="toggle-favorites">お気に入りを表示する</button>
   <div id="favorite-teachers" style="display: none;">
     <% current_user.favorites.each do |favorite| %>
-      <p><%= favorite.followed.email %></p>
+      <p><%= favorite.followed.name %></p>
     <% end %>
   </div>
 <% else %>
@@ -80,3 +81,5 @@
     }
   });
 </script>
+
+<%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>

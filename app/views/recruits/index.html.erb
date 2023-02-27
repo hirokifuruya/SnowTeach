@@ -2,6 +2,7 @@
 <h1>投稿一覧</h1>
 
 <%= form_tag(recruits_path, method: :get) do %>
+  <h2>投稿検索</h2>
   <div>
     <%= label_tag(:search, "検索") %>
     <%= text_field_tag(:search, nil, placeholder: "キーワードを入力してください") %>
@@ -9,16 +10,16 @@
 
   <div>
     <%= label_tag(:skiresort_id, "スキー場") %>
-    <%= select_tag(:skiresort_id, options_from_collection_for_select(Skiresort.all, :id, :name)) %>
+    <%= select_tag(:skiresort_id, options_from_collection_for_select(Skiresort.all, :id, :name), prompt: "選択してください") %>
   </div>
-
-  <div>
-    <%= label_tag(:label_ids, "教える内容") %><br>
-    <% Label.all.each do |label| %>
-      <%= check_box_tag "label_ids[]", label.id, params[:label_ids]&.include?(label.id.to_s) %>
-      <%= label.name %>
-    <% end %>
-  </div>
+  <h2>教える内容</h2>
+<div style="height: 200px; overflow-y: scroll;">
+  <% Label.all.each do |label| %>
+    <%= check_box_tag "label_ids[]", label.id, params[:label_ids]&.include?(label.id.to_s) %>
+    <%= label.name %>
+    <br>
+  <% end %>
+</div>
 
   <div>
     <%= submit_tag("検索", class: "search-button") %>
@@ -56,8 +57,10 @@
             <% end %>
         </td>
         <td><button type="button" class="btn btn-outline-secondary"><%= link_to '詳細', recruit %></button></td>
-        <td><button type="button" class="btn btn-outline-secondary"><%= link_to '編集', edit_recruit_path(recruit) %></button></td>
-        <td><button type="button" class="btn btn-outline-secondary"><%= link_to '削除', recruit, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+          <% if current_user == recruit.user %>
+            <td><button type="button" class="btn btn-outline-secondary"><%= link_to '編集', edit_recruit_path(recruit) %></button></td>
+            <td><button type="button" class="btn btn-outline-secondary"><%= link_to '削除', recruit, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>

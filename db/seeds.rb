@@ -77,7 +77,6 @@ end
 
 #<recruitデータ>
 Recruit.find_or_create_by(
-  id: 1,
   name: '平野歩夢',
   money: '100,000円',
   detail: 'オリンピック金メダリスト',
@@ -88,7 +87,6 @@ Recruit.find_or_create_by(
 ).labels << Label.find_by(name: '初心者')
 
 Recruit.find_or_create_by(
-  id: 2,
   name: '高橋和載',
   money: '15,000円',
   detail: 'スノーボード歴5年,優しく教えます。',
@@ -99,7 +97,6 @@ Recruit.find_or_create_by(
 ).labels << Label.find_by(name: 'カービング')
 
 Recruit.find_or_create_by(
-  id: 3,
   name: '坂本(さかもっちゃん)',
   money: '30,000円',
   detail: '真面目に教えますよ。',
@@ -110,7 +107,6 @@ Recruit.find_or_create_by(
 ).labels << Label.find_by(name: 'キッカー')
 
 Recruit.find_or_create_by(
-  id: 4,
   name: '箱崎(はこにぃ)',
   money: '20,000円',
   detail: 'スノボ歴10年、優しいオーラ全開',
@@ -121,7 +117,6 @@ Recruit.find_or_create_by(
 ).labels << Label.find_by(name: 'スーパージャイアントスラローム')
 
 Recruit.find_or_create_by(
-  id: 5,
   name: '鶴田(つるけん)',
   money: '50,000円',
   detail: 'スノボ歴15年、的確に教えます。',

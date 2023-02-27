@@ -6,3 +6,10 @@ ja:
           admin: 管理者
           instructor: インストラクター
           general: 一般ユーザー
+      user:
+        name: 名前
+      recruit:
+        name: 名前
+        detail: 詳細
+        start_day: 開始日
+        end_day: 終了日

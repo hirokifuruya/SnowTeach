@@ -8,7 +8,10 @@
         <%= @recruit.name %>
       </p>
 
-      <%= render 'users/favorite' %>
+      <% if current_user.role_id == 3 %>
+        <%= render 'users/favorite' %>
+      <% end %>
+
 
       <p style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.5;">
         <strong>お金:</strong>
