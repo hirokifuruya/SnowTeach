@@ -17,9 +17,11 @@
 
       <nav class="mr-4">
         <% if user_signed_in? %>
-          <%= link_to "募集を投稿する", new_recruit_path, class: 'mr-4' %>
+          <% if current_user.role.try(:name) == "インストラクター" %>
+            <%= link_to "募集を投稿する", new_recruit_path, class: 'mr-4' %>
+          <% end %>
           <%= link_to '投稿一覧画面', recruits_path, class: 'mr-4' %>
-          <% if current_user.role.admin? %>
+          <% if current_user.role.try(:name) == "管理者" %>
             <%= link_to '管理者画面', rails_admin_path, class: 'mr-4' %>
           <% end %>
           <%= link_to 'マイページ', user_session_path, class: 'mr-4' %>
@@ -32,6 +34,8 @@
         <% end %>
       </nav>
     </header>
+
+
 
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>

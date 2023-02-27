@@ -2,7 +2,7 @@
 <p>メールアドレス: <%= current_user.email %></p>
 <p>権限: <%= current_user.role.name %></p>
 
-<% if current_user.role.name == 'general' %>
+<% if current_user.role.try(:name) == "一般ユーザー" %>
   <div class="reservation-container">
     <h3>予約した募集</h3>
     <label for="reservation-toggle" class="toggle-label">表示する</label>
@@ -54,7 +54,7 @@
 <% end %>
 
 
-<% if current_user.role.name == 'general' %>
+<% if current_user.role.try(:name) == "一般ユーザー" %>
   <h3>お気に入りしている講師</h3>
   <button id="toggle-favorites">お気に入りを表示する</button>
   <div id="favorite-teachers" style="display: none;">

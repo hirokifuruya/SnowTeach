@@ -12,15 +12,17 @@
 
   <tbody>
     <% @requests.each do |request| %>
-      <% if current_user == request.recruit.user %>
+      <% if current_user && current_user == request.recruit.user %>
         <tr>
           <td><%= request.date %></td>
           <td><%= request.status %></td>
           <td><%= request.recruit.name %></td>
           <td><%= request.recruit.money %></td>
           <td><button type="button" class="btn btn-outline-secondary"><%= link_to '詳細', request %></button></td>
-          <td><button type="button" class="btn btn-outline-secondary"><%= link_to '編集', edit_request_path(request) %></button></td>
-          <td><button type="button" class="btn btn-outline-secondary"><%= link_to '削除', request, method: :delete, data: { confirm: "本当に削除しますか?" } %></button></td>
+          <% if current_user.role.instructor? %>
+            <td><button type="button" class="btn btn-outline-secondary"><%= link_to '編集', edit_request_path(request) %></button></td>
+            <td><button type="button" class="btn btn-outline-secondary"><%= link_to '削除', request, method: :delete, data: { confirm: "本当に削除しますか?" } %></button></td>
+          <% end %>
         </tr>
       <% end %>
     <% end %>

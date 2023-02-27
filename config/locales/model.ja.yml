@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      role:
+        name:
+          admin: 管理者
+          instructor: インストラクター
+          general: 一般ユーザー
