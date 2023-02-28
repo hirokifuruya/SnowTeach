@@ -18,14 +18,14 @@ Role.create!(name: "一般ユーザー") unless Role.exists?(name: "一般ユー
 #<userデータ>
 User.create!(
   [
-    {name: '古谷', email: 'furuya@gmail.com', password: 'furuya@gmail.com', role_id: 1},
-    {name: '平野', email: 'instructor1@gmail.com', password: 'instructor1@gmail.com', role_id: 2},
-    {name: '高橋', email: 'instructor2@gmail.com', password: 'instructor2@gmail.com', role_id: 2},
-    {name: '坂本', email: 'instructor3@gmail.com', password: 'instructor3@gmail.com', role_id: 2},
-    {name: '箱崎', email: 'instructor4@gmail.com', password: 'instructor4@gmail.com', role_id: 2},
-    {name: '鶴田', email: 'instructor5@gmail.com', password: 'instructor5@gmail.com', role_id: 2},
-    {name: '田中', email: 'general1@gmail.com', password: 'general1@gmail.com', role_id: 3},
-    {name: '鈴木', email: 'general2@gmail.com', password: 'general2@gmail.com', role_id: 3}
+    {name: '古谷 啓起', email: 'furuya@gmail.com', password: 'furuya@gmail.com', role_id: 1},
+    {name: '平野 歩夢', email: 'instructor1@gmail.com', password: 'instructor1@gmail.com', role_id: 2},
+    {name: '高橋 和載', email: 'instructor2@gmail.com', password: 'instructor2@gmail.com', role_id: 2},
+    {name: '坂本 和樹', email: 'instructor3@gmail.com', password: 'instructor3@gmail.com', role_id: 2},
+    {name: '箱崎 ふみあき', email: 'instructor4@gmail.com', password: 'instructor4@gmail.com', role_id: 2},
+    {name: '鶴田 健', email: 'instructor5@gmail.com', password: 'instructor5@gmail.com', role_id: 2},
+    {name: '田中 舞', email: 'general1@gmail.com', password: 'general1@gmail.com', role_id: 3},
+    {name: '鈴木 広斗', email: 'general2@gmail.com', password: 'general2@gmail.com', role_id: 3}
   ].reject { |user| User.exists?(email: user[:email]) }
     )
 
@@ -77,7 +77,7 @@ end
 
 #<recruitデータ>
 Recruit.find_or_create_by(
-  name: '平野歩夢',
+  name: '平野 歩夢',
   money: '100,000円',
   detail: 'オリンピック金メダリスト',
   start_day: '2023/2/25',
@@ -87,7 +87,7 @@ Recruit.find_or_create_by(
 ).labels << Label.find_by(name: '初心者')
 
 Recruit.find_or_create_by(
-  name: '高橋和載',
+  name: '高橋 和載',
   money: '15,000円',
   detail: 'スノーボード歴5年,優しく教えます。',
   start_day: '2023/2/28',
@@ -97,7 +97,7 @@ Recruit.find_or_create_by(
 ).labels << Label.find_by(name: 'カービング')
 
 Recruit.find_or_create_by(
-  name: '坂本(さかもっちゃん)',
+  name: '坂本 和樹',
   money: '30,000円',
   detail: '真面目に教えますよ。',
   start_day: '2023/3/5',
@@ -107,7 +107,7 @@ Recruit.find_or_create_by(
 ).labels << Label.find_by(name: 'キッカー')
 
 Recruit.find_or_create_by(
-  name: '箱崎(はこにぃ)',
+  name: '箱崎 ふみあき',
   money: '20,000円',
   detail: 'スノボ歴10年、優しいオーラ全開',
   start_day: '2023/2/25',
@@ -117,7 +117,7 @@ Recruit.find_or_create_by(
 ).labels << Label.find_by(name: 'スーパージャイアントスラローム')
 
 Recruit.find_or_create_by(
-  name: '鶴田(つるけん)',
+  name: '鶴田 健',
   money: '50,000円',
   detail: 'スノボ歴15年、的確に教えます。',
   start_day: '2023/3/4',

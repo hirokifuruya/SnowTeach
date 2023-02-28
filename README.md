@@ -36,7 +36,7 @@ https://cacoo.com/diagrams/Pz0c3pANEnyVEPt1/D7AD3
 
 # ER図
 
-![スクリーンショット 2023-02-07 19 24 54（2）](https://user-images.githubusercontent.com/117243796/217219205-858fd5aa-539d-4a5b-911f-3bcefc712a5a.png)
+![スクリーンショット 2023-02-28 12 58 58（2）](https://user-images.githubusercontent.com/117243796/221750181-2d1cbbb3-8c58-4912-b952-dff65eaba04e.png)
 
 # 画面遷移図
 
