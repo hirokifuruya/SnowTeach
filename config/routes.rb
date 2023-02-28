@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     get 'admin_guest_sign_in', to: 'users/sessions#admin_guest', as: :admin_guest_sign_in_path
   end
 
-  # authenticated :user do
-  #   root to: 'users#my_page', as: :authenticated_root
-  # end
+  authenticated :user do
+    root to: 'users#show', as: :authenticated_root
+  end
 
   unauthenticated do
     root to: 'welcome#index'
