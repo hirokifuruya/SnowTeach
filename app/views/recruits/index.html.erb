@@ -1,30 +1,34 @@
 
 <h1>投稿一覧</h1>
 
-<%= form_tag(recruits_path, method: :get) do %>
-  <h2>投稿検索</h2>
-    <%= label_tag(:search, "インストラクター検索") %>
-  <div>
-    <%= text_field_tag(:search, nil, placeholder: "名前を入力してください") %>
+<%= form_tag(recruits_path, method: :get, class: "search-form") do %>
+  <div class="form-group">
+    <%= label_tag(:search, "インストラクター検索", class: "form-label") %>
+    <%= text_field_tag(:search, nil, placeholder: "名前を入力してください", class: "form-control") %>
   </div>
-  <br>
-    <%= label_tag(:skiresort_id, "スキー場") %>
-  <div>
-    <%= select_tag(:skiresort_id, options_from_collection_for_select(Skiresort.all, :id, :name), prompt: "選択してください") %>
-  </div>
-  <h2>教える内容</h2>
-<div style="height: 200px; overflow-y: scroll;">
-  <% Label.all.each do |label| %>
-    <%= check_box_tag "label_ids[]", label.id, params[:label_ids]&.include?(label.id.to_s) %>
-    <%= label.name %>
-    <br>
-  <% end %>
-</div>
 
-  <div>
-    <%= submit_tag("検索", class: "search-button") %>
+  <div class="form-group">
+    <%= label_tag(:skiresort_id, "スキー場", class: "form-label") %>
+    <%= select_tag(:skiresort_id, options_from_collection_for_select(Skiresort.all, :id, :name), prompt: "選択してください", class: "form-control") %>
+  </div>
+
+  <div class="form-group">
+    <h2>教える内容</h2>
+    <div class="checkbox-group">
+      <% Label.all.each do |label| %>
+        <div class="form-check">
+          <%= check_box_tag "label_ids[]", label.id, params[:label_ids]&.include?(label.id.to_s), id: "label_#{label.id}", class: "form-check-input" %>
+          <%= label_tag "label_#{label.id}", label.name, class: "form-check-label" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= submit_tag("検索", class: "btn btn-primary") %>
   </div>
 <% end %>
+
 
 
 

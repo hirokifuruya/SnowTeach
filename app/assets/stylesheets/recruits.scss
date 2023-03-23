@@ -25,3 +25,33 @@ label {
 input[type="checkbox"] {
   margin-right: 5px;
 }
+
+form.search-form {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.checkbox-group {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.checkbox-group {
+  margin-bottom: 20px;
+}
+.form-check {
+  display: block;
+  margin-bottom: 10px;
+}
+.form-check-input {
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
+}
+.form-check-label {
+  font-weight: normal;
+}
