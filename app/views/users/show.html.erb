@@ -39,47 +39,43 @@
     <% end %>
   </div>
 
-  <script>
-    const reservationToggle = document.getElementById('reservation-toggle');
-    const reservationContainer = document.querySelector('.reservation-container');
-    reservationToggle.addEventListener('change', function() {
-      if (reservationToggle.checked) {
-        reservationContainer.classList.add('visible');
-      } else {
-        reservationContainer.classList.remove('visible');
-      }
-    });
-  </script>
-<% else %>
-  <%= link_to '予約一覧画面', requests_path %>
-<% end %>
-
-
-<% if current_user.role.try(:name) == "一般ユーザー" %>
-  <h3>お気に入りしている講師</h3>
-  <button id="toggle-favorites">お気に入りを表示する</button>
-  <div id="favorite-teachers" style="display: none;">
-    <% current_user.favorites.each do |favorite| %>
-      <p><%= favorite.followed.name %></p>
-    <% end %>
-  </div>
-<% else %>
-  <p> </p>
-<% end %>
-
 <script>
-  // お気に入り講師の表示/非表示を切り替える
-  const toggleFavorites = document.querySelector('#toggle-favorites');
-  const favoriteTeachers = document.querySelector('#favorite-teachers');
-  toggleFavorites.addEventListener('click', () => {
-    if (favoriteTeachers.style.display === 'none') {
-      favoriteTeachers.style.display = 'block';
-      toggleFavorites.textContent = 'お気に入りを非表示にする';
+  let reservationToggleBtn = document.getElementById('reservation-toggle');
+  reservationToggleBtn.addEventListener('change', function() {
+    const reservationContainer = document.querySelector('.reservation-container');
+    if (reservationToggleBtn.checked) {
+      reservationContainer.classList.add('visible');
     } else {
-      favoriteTeachers.style.display = 'none';
-      toggleFavorites.textContent = 'お気に入りを表示する';
+      reservationContainer.classList.remove('visible');
     }
   });
 </script>
 
-<%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>
+<% else %>
+  <%= link_to '予約一覧画面', requests_path %>
+<% end %>
+
+<% if current_user.role.try(:name) == "一般ユーザー" %>
+  <h3>お気に入りしている講師</h3>
+  <button id="toggle-favorites">お気に入りを表示する</button>
+  <div id="favorite-teachers-container" style="display: none;">
+    <% current_user.favorites.each do |favorite| %>
+      <p><%= favorite.followed.name %></p>
+    <% end %>
+  </div>
+  <script>
+    let toggleFavoritesBtn = document.querySelector('#toggle-favorites');
+    toggleFavoritesBtn.addEventListener('click', () => {
+      const favoriteTeachersContainer = document.querySelector('#favorite-teachers-container');
+      if (favoriteTeachersContainer.style.display === 'none') {
+        favoriteTeachersContainer.style.display = 'block';
+        toggleFavoritesBtn.textContent = 'お気に入りを非表示にする';
+      } else {
+        favoriteTeachersContainer.style.display = 'none';
+        toggleFavoritesBtn.textContent = 'お気に入りを表示する';
+      }
+    });
+  </script>
+<% else %>
+  <p> </p>
+<% end %>
